@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>GeoJSON marker from GitHub</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+    <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <script>
+      if (detectIE() != false){
+        alert('Internet Explorer Detected');
+        window.location = "ieredirect.html";
+      };
+      /**
+      * detect IE
+      * returns version of IE or false, if browser is not Internet Explorer
+      */
+      function detectIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        if (msie > 0) {
+            // IE 10 or older => return version number
+            return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+        }
+        var trident = ua.indexOf('Trident/');
+        if (trident > 0) {
+            // IE 11 => return version number
+            var rv = ua.indexOf('rv:');
+            return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+        }
+        var edge = ua.indexOf('Edge/');
+        if (edge > 0) {
+           // IE 12 (aka Edge) => return version number
+           return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+        }
+        // other browser
+        return false;
+      }
+    </script>
+    <style>
+      html, body, #mapbox { height: 100% }
+      #header {
+        height: 180px;
+        background-color: #f6f6f6;
+        background-image: url(pdxskyE4.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      #dropshadow {
+        position: absolute;
+        top: 180px;
+        height: 25px;
+        width: 100%;
+        background: rgba(38,38,38,1);
+        background: -moz-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(80,80,80,0) 50%, rgba(0,0,0,0) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(80,80,80,1)), color-stop(50%, rgba(80,80,80,0)), color-stop(100%, rgba(0,0,0,0)));
+        background: -webkit-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(80,80,80,0) 50%, rgba(0,0,0,0) 100%);
+        background: -o-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(80,80,80,0) 50%, rgba(0,0,0,0) 100%);
+        background: -ms-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(80,80,80,0) 50%, rgba(0,0,0,0) 100%);
+        background: linear-gradient(to bottom, rgba(80,80,80,1) 0%, rgba(80,80,80,0) 50%, rgba(0,0,0,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#262626', endColorstr='#000000', GradientType=0 );
+        z-index: 1;
+      }
+      #map {
+        position:relative;
+        height: 820px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .header-ui {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      .list-group-horizontal {
+        padding-top: 10px;
+      }
+      .list-group-horizontal .list-group-item {
+        display: inline-block;
+      }
+      .list-group-horizontal .list-group-item {
+      	margin-bottom: 0;
+      	margin-left:-4px;
+      	margin-right: 0;
+      }
+      .list-group-horizontal .list-group-item:first-child {
+      	border-top-right-radius:0;
+      	border-bottom-left-radius:4px;
+      }
+      .list-group-horizontal .list-group-item:last-child {
+      	border-top-right-radius:4px;
+      	border-bottom-left-radius:0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='dropshadow'></div>
+    <!-- Page -->
+    <div id='mapbox'>
+      <div id='header'>
+        <div class='header-ui'>
+          <!-- Page Title -->
+          <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 2.25em; color: #454545; padding-top: 20px;">
+            Development Mapping Beta
+          </p>
+          <!-- Search Bar -->
+          <div class='input-group' style="width: 40%; margin-left: auto; margin-right: auto; padding-top: 5px; position: relative;">
+            <input type='text' id='search' class='form-control' placeholder="Enter a term to filter by..." aria-describedby='basic-addon1'>
+          </div>
+          <!-- Filter Selection Box -->
+          <div class="list-group-horizontal" id="menu-ui">
+            <a href='#' class='list-group-item active' data-filter='all'><span class="badge" id="allB">5</span>Show all&nbsp;&nbsp;&nbsp;</a>
+            <a href='#' class='list-group-item' data-filter='retail'><span class="badge" id="retailB">54</span>Retail&nbsp;&nbsp;&nbsp;</a>
+            <a href='#' class='list-group-item' data-filter='apartment'><span class="badge" id="apartmentB">74</span>Apartments&nbsp;&nbsp;&nbsp;</a>
+            <a href='#' class='list-group-item' data-filter='office'><span class="badge" id="officeB">22</span>Office&nbsp;&nbsp;&nbsp;</a>
+            <a href='#' class='list-group-item' data-filter='condo'><span class="badge" id="condoB">276</span>Condo&nbsp;&nbsp;&nbsp;</a>
+            <a href='#' class='list-group-item' data-filter='hotel'><span class="badge" id="hotelB">3</span>Hotel&nbsp;&nbsp;&nbsp;</a>
+          </div>
+        </div>
+      </div>
+      <!-- Mapbox Container -->
+      <div id='map'></div>
+    </div>
+
+    <!-- Interaction Logic -->
+    <script>
+      L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ.AamjhGik8yPxK5V71kzHdw';
+      var url = 'https://api.github.com/repos/McCulloughRT/GISData/contents/pdx_newDev.geojson';
+      var markers = L.mapbox.featureLayer();
+      var data = {};
+      var map = L.mapbox.map('map'),
+          heat = L.heatLayer([], {
+            maxZoom: 16,
+            radius: 35,
+            blur: 40
+            });
+      console.log(heat);
+
+      // AJAX Load GeoJSON from GitHub
+      $.ajax({
+        headers: {
+          'Accept': 'application/vnd.github.v3.raw'
+          },
+        xhrFields: {
+          withCredentials: false
+          },
+        dataType: 'json',
+        url: url,
+        async: true,
+        success: function(geojson) {
+          data = geojson;
+          OnDataLoad();
+          }
+        });
+
+      function OnDataLoad() {
+        // Setup Map
+
+        map.setView([45.5200, -122.6819], 13);
+        markers.setGeoJSON(data);
+        markers.eachLayer(function(l) {
+          heat.addLatLng(l.getLatLng());
+          });
+        L.control.layers({
+          'Light Map' : L.mapbox.tileLayer('mapbox.light').addTo(map),
+          'Normal Map': L.mapbox.tileLayer('mapbox.streets'),
+          'Dark Map': L.mapbox.tileLayer('mapbox.dark')
+          }, {
+          'Heat Map': heat.addTo(map),
+          'Markers': markers
+          }).addTo(map);
+        MarkerCount();
+        var totalArr = [];
+        markers.eachLayer(function(marker){
+          totalArr.push(marker.title);
+        });
+        $('#allB').text(totalArr.length);
+      }
+
+      // Event Watchers for Filter Control
+      $('#menu-ui a').on('click', function() {
+        $(this).parent().children().removeClass("active");
+        $(this).addClass("active");
+        search();
+        });
+      $('#search').keyup(search);
+
+      // Filter Control Logic
+      function search() {
+        var filter = $('.active').data('filter');
+        var searchString = $('#search').val().toLowerCase();
+        markers.setFilter(function(f) {
+          console.log(f);
+          if (filter === 'all' && f.properties.description.toLowerCase().search(searchString) !== -1) {
+            return true;
+            } else if (f.properties['productType'].indexOf(filter) != -1 && f.properties.description.toLowerCase().search(searchString) !== -1){
+            return true;
+            }
+          });
+        SetData();
+        }
+
+      // Helper function to reset data layers
+      function SetData() {
+        heat.setLatLngs([]);
+        markers.setGeoJSON(data);
+        markers.eachLayer(function(l){
+          heat.addLatLng(l.getLatLng());
+          });
+        MarkerCount();
+        }
+
+      // Counting Markers
+      function MarkerCount() {
+        var retailArr = [],
+            apartmentArr = [],
+            officeArr = [],
+            condoArr = [],
+            hotelArr = [];
+        markers.eachLayer(function(marker){
+          if (marker.feature.properties['productType'].indexOf('retail') != -1) { retailArr.push(true)};
+          if (marker.feature.properties['productType'].indexOf('apartment') != -1) { apartmentArr.push(true)};
+          if (marker.feature.properties['productType'].indexOf('office') != -1) { officeArr.push(true)};
+          if (marker.feature.properties['productType'].indexOf('condo') != -1) { condoArr.push(true)};
+          if (marker.feature.properties['productType'].indexOf('hotel') != -1) { hotelArr.push(true)};
+        });
+        $('#retailB').text(retailArr.length);
+        $('#apartmentB').text(apartmentArr.length);
+        $('#officeB').text(officeArr.length);
+        $('#condoB').text(condoArr.length);
+        $('#hotelB').text(hotelArr.length);
+      }
+
+      // Marker Colors
+      function setColors() {
+        for (var i=0;  i < data.length; i++) {
+          data[i].properties['marker-color'] = '#FF0000';
+          }
+        markers.setGeoJSON(data);
+        };
+
+    </script>
+  </body>
+</html>
