@@ -195,6 +195,8 @@
             blur: 50
             });
       console.log(heat);
+      var credits = L.control.attribution().addTo(map);
+      credits.addAttribution('Data Source: www.nextportland.com');
 
       // AJAX Load GeoJSON from GitHub
       $.ajax({
