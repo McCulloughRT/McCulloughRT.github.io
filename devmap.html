@@ -95,6 +95,13 @@
         margin-right: auto;
         top: -5px;
       }
+      #graphics {
+        position:absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 170px;
+        z-index: 2;
+      }
 
       .list-group-horizontal {
         padding-top: 10px;
@@ -124,6 +131,27 @@
     <div id='canvasContainer'>
       <canvas id='demo-canvas'></canvas>
     </div>
+    <!-- Graphics Options -->
+    <div id="graphics" hidden>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" id='zoomBtn'>Zoom(15.6)</button>
+        </span>
+        <input type="text" class="form-control" id="zoomControl" placeholder="MaxZoom...">
+      </div>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" id="radiusBtn">Radius(40)</button>
+        </span>
+        <input type="text" class="form-control" id="radiusControl" placeholder="Radius...">
+      </div>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" id='blurBtn'>Blur(50)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+        </span>
+        <input type="text" class="form-control" id="blurControl" placeholder="Blur...">
+      </div>
+    </div>
 
     <!-- THE HEADER -->
     <div id='header'>
@@ -138,11 +166,11 @@
       <!-- Filter Selection Box -->
       <div class="list-group-horizontal" id="menu-ui">
         <a href='#' class='list-group-item active' data-filter='all' data-step="2" data-intro='Clicking the Product Type buttons will show only projects of that type.'><span class="badge" id="allB">5</span>Show all&nbsp;&nbsp;&nbsp;</a>
-        <a href='#' class='list-group-item' data-filter='retail'><span class="badge" id="retailB">54</span>Retail&nbsp;&nbsp;&nbsp;</a>
+        <a href='#' class='list-group-item' data-filter='retail'><span class="badge" id="retailB">##</span>Retail&nbsp;&nbsp;&nbsp;</a>
         <a href='#' class='list-group-item' data-filter='apartment' data-step="3" data-intro='When a type is selected, the badge numbers show how many of THOSE types are still showing. In other words, overlapping types, or mixed-use projects!'><span class="badge" id="apartmentB">74</span>Apartments&nbsp;&nbsp;&nbsp;</a>
-        <a href='#' class='list-group-item' data-filter='office'><span class="badge" id="officeB">22</span>Office&nbsp;&nbsp;&nbsp;</a>
-        <a href='#' class='list-group-item' data-filter='condo'><span class="badge" id="condoB">276</span>Condo&nbsp;&nbsp;&nbsp;</a>
-        <a href='#' class='list-group-item' data-filter='hotel'><span class="badge" id="hotelB">3</span>Hotel&nbsp;&nbsp;&nbsp;</a>
+        <a href='#' class='list-group-item' data-filter='office'><span class="badge" id="officeB">##</span>Office&nbsp;&nbsp;&nbsp;</a>
+        <a href='#' class='list-group-item' data-filter='condo'><span class="badge" id="condoB">##</span>Condo&nbsp;&nbsp;&nbsp;</a>
+        <a href='#' class='list-group-item' data-filter='hotel'><span class="badge" id="hotelB">##</span>Hotel&nbsp;&nbsp;&nbsp;</a>
       </div>
     </div>
 
@@ -154,6 +182,7 @@
     <script src="TweenLite.min.js"></script>
     <script src="header.js"></script>
     <script>
+      // try z15, r40, b50
       $("#map").height($(window).innerHeight()-180);
       L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ.AamjhGik8yPxK5V71kzHdw';
       var url = 'https://api.github.com/repos/McCulloughRT/GISData/contents/pdx_newDev.geojson';
@@ -161,11 +190,11 @@
       var data = {};
       var map = L.mapbox.map('map'),
           heat = L.heatLayer([], {
-            maxZoom: 16,
-            radius: 35,
-            blur: 40
+            maxZoom: 15.6,
+            radius: 40,
+            blur: 50
             });
-      //console.log(heat);
+      console.log(heat);
 
       // AJAX Load GeoJSON from GitHub
       $.ajax({
@@ -186,7 +215,7 @@
 
       function OnDataLoad() {
         // Setup Map
-        map.setView([45.5200, -122.6819], 13);
+        map.setView([45.5200, -122.6819], 14);
         markers.setGeoJSON(data);
         markers.eachLayer(function(l) {
           heat.addLatLng(l.getLatLng());
@@ -215,6 +244,24 @@
         $(this).addClass("active");
         search();
         });
+      //Radius Button
+      $("#radiusBtn").on('click', function() {
+        var v = $('#radiusControl').val();
+        heat.setOptions({radius: Number(v)});
+        console.log(heat);
+      });
+      //Blur Button
+      $("#blurBtn").on('click', function() {
+        var v = $('#blurControl').val();
+        heat.setOptions({blur: Number(v)});
+        console.log(heat);
+      });
+      //Zoom Button
+      $("#zoomBtn").on('click', function() {
+        var v = $('#zoomControl').val();
+        heat.setOptions({maxZoom: Number(v)});
+        console.log(heat);
+      });
       /* Search Field Entry */
       $('#search').keyup(search);
       /* Window Resize Event */
@@ -276,6 +323,12 @@
       //     }
       //   markers.setGeoJSON(data);
       //   };
+      function ShowGraphics(){
+        $('#graphics').show();
+      }
+      function HideGraphics(){
+        $('#graphics').hide();
+      }
 
     </script>
   </body>
