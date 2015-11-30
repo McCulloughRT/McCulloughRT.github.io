@@ -132,14 +132,14 @@
         Geospatial Analysis for Architecture
       </p>
       <!-- Search Bar -->
-      <div class='input-group' style="width: 40%; margin-left: auto; margin-right: auto; padding-top: 5px; position: relative;">
-        <input type='text' id='search' class='form-control' placeholder="Enter a term to filter by..." aria-describedby='basic-addon1' data-step="3" data-intro="To refine your map further, begin typing into the query feild. Projects whose descriptions contain your query will be filtered in.">
+      <div class='input-group' style="width: 40%; margin-left: auto; margin-right: auto; padding-top: 5px; position: relative;" data-step="1" data-intro="This page plots projects in the City of Portland's development pipeline (announced through completion) on a map, and merges that data into heatmaps to make patterns easier to digest. Data is filterable by a wide variety of variables, and individual projects can be viewed as markers.">
+        <input type='text' id='search' class='form-control' placeholder="Enter a term to filter by..." aria-describedby='basic-addon1' data-step="4" data-intro="To refine your map further, begin typing into the query feild. Projects whose descriptions contain your query will be filtered in.">
       </div>
       <!-- Filter Selection Box -->
       <div class="list-group-horizontal" id="menu-ui">
-        <a href='#' class='list-group-item active' data-filter='all' data-step="1" data-intro='Clicking the Product Type buttons will show only projects of that type.'><span class="badge" id="allB">5</span>Show all&nbsp;&nbsp;&nbsp;</a>
+        <a href='#' class='list-group-item active' data-filter='all' data-step="2" data-intro='Clicking the Product Type buttons will show only projects of that type.'><span class="badge" id="allB">5</span>Show all&nbsp;&nbsp;&nbsp;</a>
         <a href='#' class='list-group-item' data-filter='retail'><span class="badge" id="retailB">54</span>Retail&nbsp;&nbsp;&nbsp;</a>
-        <a href='#' class='list-group-item' data-filter='apartment' data-step="2" data-intro='When a type is selected, the badge numbers show how many of THOSE types are still showing. In other words, overlapping types, or mixed-use projects!'><span class="badge" id="apartmentB">74</span>Apartments&nbsp;&nbsp;&nbsp;</a>
+        <a href='#' class='list-group-item' data-filter='apartment' data-step="3" data-intro='When a type is selected, the badge numbers show how many of THOSE types are still showing. In other words, overlapping types, or mixed-use projects!'><span class="badge" id="apartmentB">74</span>Apartments&nbsp;&nbsp;&nbsp;</a>
         <a href='#' class='list-group-item' data-filter='office'><span class="badge" id="officeB">22</span>Office&nbsp;&nbsp;&nbsp;</a>
         <a href='#' class='list-group-item' data-filter='condo'><span class="badge" id="condoB">276</span>Condo&nbsp;&nbsp;&nbsp;</a>
         <a href='#' class='list-group-item' data-filter='hotel'><span class="badge" id="hotelB">3</span>Hotel&nbsp;&nbsp;&nbsp;</a>
@@ -147,7 +147,7 @@
     </div>
 
     <!-- THE MAP -->
-    <div id='map' data-step="4" data-position="right" data-intro="Last, try clicking the layers menu in the top right corner of the map to turn project markers on and off, or change map types. If you click a marker, more information on the project will become available"></div>
+    <div id='map' data-step="5" data-position="right" data-intro="Last, try clicking the layers menu in the top right corner of the map to turn project markers on and off, or change map types. If you click a marker, more information on the project will become available"></div>
 
     <!-- Interaction Logic -->
     <script src="EasePack.min.js"></script>
