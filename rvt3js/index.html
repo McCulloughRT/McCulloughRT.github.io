@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset=utf-8>
@@ -99,7 +98,7 @@
 		</div>
 
 		<script src="js/leap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.js"></script>
 		<script src="js/controls/LeapTwoHandControls.js"></script>
 		<script src="js/controls/LeapPointerControls.js"></script>
 		<script src="js/controls/OrbitControls.js"></script>
@@ -112,6 +111,7 @@
 
 		<script>
 	    /* WEB GL CODE */
+			var idR;
 	    var i_scene = new THREE.Scene();
 	    var i_aspect = window.innerWidth / window.innerHeight;
 	    var i_camera = new THREE.PerspectiveCamera(75, i_aspect, 0.1, 1000);
@@ -126,7 +126,7 @@
 	    i_camera.position.z = 5;
 
 	    var i_render = function () {
-	      requestAnimationFrame(i_render);
+	      idR = requestAnimationFrame(i_render);
 	      i_cube.rotation.x += 0.03;
 	      i_cube.rotation.y += 0.03;
 	      i_renderer.render(i_scene, i_camera);
@@ -149,34 +149,23 @@
 			var grabBtn = document.querySelector( '.leap-ctrl' );
 			var pntBtn = document.querySelector( '.leapP-ctrl' );
 			var vrBtn = document.querySelector( '.vr' );
+
+			mouseBtn.onclick = function(){mouse();};
+			grabBtn.onclick = function(){twoHand();};
+			pntBtn.onclick = function(){pointer();};
+			vrBtn.onclick = function(){window.location = "threeVR.html";}
 			clkBtn.onclick = function(){
-				console.log('button clicked');
 				if ($('.description-event').hasClass('active')){
-					console.log('had active');
 					$('.description-event').removeClass('active');
 					removeInfoListener();
 				} else {
-					console.log('no active');
 					$('.description-event').addClass('active');
 					addInfoListener();
 				}
 			};
-			mouseBtn.onclick = function(){
-				mouse();
-			};
-			grabBtn.onclick = function(){
-				twoHand();
-			};
-			pntBtn.onclick = function(){
-				pointer();
-			};
-			vrBtn.onclick = function(){
-				window.location = "threeVR.html";
-			}
-			//window.addEventListener( 'resize', onWindowResize, false );
 
 			init();
-			animate();
+			//animate();
 
 			function init() {
 				controller = new Leap.Controller();
@@ -206,7 +195,7 @@
 
 				oLoad = new THREE.ObjectLoader();
 				oLoad.load('js/models/sample.min.js', function ( object ) {
-					/* BETA FEATURE */
+					/* LOAD AND SMOOTH MESH */
 					scene = object;
 					scene.children.forEach(function(obj3d){
 						if (obj3d instanceof THREE.Object3D) {
@@ -223,7 +212,6 @@
 							})
 						};
 					});
-					/* END BETA FEATURE */
 
 					/* CREATE SKYBOX */
 					var urlPrefix = '/rvt3js/img/sky/',
@@ -269,32 +257,31 @@
 
 						scene.add(directional);
 					/* END LIGHTS */
+
 					computeNormalsAndFaces();
 					THREEx.WindowResize(renderer, camera);
 					console.log('load complete!');
-
-					/* Events */
+					render()
+					
 		      $('#introContainer').fadeOut("slow", function(){
-		        $('#mainContainer').fadeIn("slow",function(){
-							//fade in
-						});
+		        $('#mainContainer').fadeIn("slow",function(){});
 		      });
-
 				});
 
 				controller.connect(function(){
 					console.log('connected!');
 				});
-
+				controls.addEventListener( 'change', render );
 				addInfoListener();
 			}
 
-      function animate(){
-				requestAnimationFrame( animate );
-				controls.update();
-				stats.update();
-				render();
-      }
+			/* ANIMATE DEPRECATED ON STATIC SCENE */
+      // function animate(){
+			// 	requestAnimationFrame( animate );
+			// 	controls.update();
+			// 	stats.update();
+			// 	render();
+      // }
 
 			function render(){
 				renderer.render(scene, camera);
@@ -331,6 +318,10 @@
 					controls.dampingFactor = .75;
 					controls.enableZoom = true;
 			}
+
+			function stopAnim(){
+	      cancelAnimationFrame(idR);
+	    }
 
 			// function onWindowResize(){
 			// 	camera.aspect = window.innerWidth / window.innerHeight;
