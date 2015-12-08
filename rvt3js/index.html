@@ -4,9 +4,31 @@
 		<meta charset=utf-8>
 		<title>Rvt3js</title>
 		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Merriweather:300italic,300,700,900' rel='stylesheet' type='text/css'>
 		<style>
 			body { margin: 0; overflow: hidden;}
 			canvas { width: 90%; height: 90% }
+
+			#introContainer {
+
+			}
+			#loadtext {
+				font-family: 'Merriweather', serif;
+	      font-weight: 300;
+	      font-size: 18px;
+	      line-height: 1.5;
+	      letter-spacing: -0.004em;
+	      color: rgba(0,0,0,0.8);
+	      text-align: center;
+
+	      position: fixed;
+	      width: 100%;
+	      top: 68%;
+	      z-index: 1000;
+			}
+			#mainContainer {
+
+			}
 
 			.menuR {
 				position: fixed;
@@ -47,29 +69,34 @@
 		</style>
 	</head>
 	<body>
-		<div class="menuL">
-			<div class="button description-event active">
-				Toggle InfoClicks
-			</div>
+		<div id="introContainer">
+			<div id="loadtext">Loading...</div>
 		</div>
-		<div class="menuR">
-			<div class="button mouse-ctrl">
-				Mouse Controls
+		<div id="mainContainer" hidden>
+			<div class="menuL">
+				<div class="button description-event active">
+					Toggle InfoClicks
+				</div>
 			</div>
-			<div class="button leap-ctrl">
-				Leap Grab
+			<div class="menuR">
+				<div class="button mouse-ctrl">
+					Mouse Controls
+				</div>
+				<div class="button leap-ctrl">
+					Leap Grab
+				</div>
+				<div class="button leapP-ctrl">
+					Leap Point
+				</div>
+				<div class="button vr">
+					VR Display
+				</div>
 			</div>
-			<div class="button leapP-ctrl">
-				Leap Point
+			<div style='background-color: #ccc; left: 20px; opacity: 0.85; position: absolute; top: 70px;'>
+				<div id=msg style=font-size:10pt;padding:8px; ></div>
 			</div>
-			<div class="button vr">
-				VR Display
-			</div>
+			<div id="container"></div>
 		</div>
-		<div style='background-color: #ccc; left: 20px; opacity: 0.85; position: absolute; top: 70px;'>
-			<div id=msg style=font-size:10pt;padding:8px; ></div>
-		</div>
-		<div id="container"></div>
 
 		<script src="js/leap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
@@ -81,6 +108,31 @@
 		<script src="js/Projector.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src='js/showAtt.js'></script>
+		<script src='js/THREEx.WindowResize.js'></script>
+
+		<script>
+	    /* WEB GL CODE */
+	    var i_scene = new THREE.Scene();
+	    var i_aspect = window.innerWidth / window.innerHeight;
+	    var i_camera = new THREE.PerspectiveCamera(75, i_aspect, 0.1, 1000);
+	    var i_renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+	    i_renderer.setSize(window.innerWidth, window.innerHeight);
+	    document.getElementById("introContainer").appendChild(i_renderer.domElement);
+
+	    var i_geometry = new THREE.BoxGeometry(1,1,1);
+	    var i_material = new THREE.MeshNormalMaterial();
+	    var i_cube = new THREE.Mesh(i_geometry, i_material);
+	    i_scene.add(i_cube);
+	    i_camera.position.z = 5;
+
+	    var i_render = function () {
+	      requestAnimationFrame(i_render);
+	      i_cube.rotation.x += 0.03;
+	      i_cube.rotation.y += 0.03;
+	      i_renderer.render(i_scene, i_camera);
+	    };
+	    i_render();
+	  </script>
 
 		<script>
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
@@ -218,7 +270,16 @@
 						scene.add(directional);
 					/* END LIGHTS */
 					computeNormalsAndFaces();
+					THREEx.WindowResize(renderer, camera);
 					console.log('load complete!');
+
+					/* Events */
+		      $('#introContainer').fadeOut("slow", function(){
+		        $('#mainContainer').fadeIn("slow",function(){
+							//fade in
+						});
+		      });
+
 				});
 
 				controller.connect(function(){
@@ -271,11 +332,11 @@
 					controls.enableZoom = true;
 			}
 
-			function onWindowResize(){
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize(window.innerwidth, window.innerHeight);
-			}
+			// function onWindowResize(){
+			// 	camera.aspect = window.innerWidth / window.innerHeight;
+			// 	camera.updateProjectionMatrix();
+			// 	renderer.setSize(window.innerwidth, window.innerHeight);
+			// }
 
 		</script>
 	</body>
