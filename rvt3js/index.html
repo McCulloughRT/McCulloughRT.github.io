@@ -119,7 +119,7 @@
 		<script src='js/THREEx.WindowResize.js'></script>
 
 		<script>
-	    /* WEB GL CODE */
+	    /* LOADING ANIMATION */
 			var idR;
 	    var i_scene = new THREE.Scene();
 	    var i_aspect = window.innerWidth / window.innerHeight;
@@ -177,6 +177,7 @@
 			//animate();
 
 			function init() {
+				/* INITILZE THREE VARIABLES */
 				controller = new Leap.Controller();
 				scene = new THREE.Scene();
 				projector = new  THREE.Projector();
@@ -186,25 +187,25 @@
 	      renderer.setSize(window.innerWidth, window.innerHeight);
 				container = document.getElementById( 'container' );
 				container.appendChild( renderer.domElement );
-				/* END RENDERER */
 
-				/* CREATE STATS OBJECT */
+				/* CREATE CAMERA */
+				camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 200000);
+				camera.position.set(15000,15000,15000);
+
+				// /* CREATE STATS OBJECT */
 				// stats = new Stats();
 				// stats.domElement.style.position = 'absolute';
 				// stats.domElement.style.top = '10px';
 				// stats.domElement.style.left = '10px';
 				// stats.domElement.style.zIndex = 100;
 				// container.appendChild( stats.domElement );
-				/* END STATS OBJECT */
 
-				camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 200000);
-				camera.position.set(15000,15000,15000);
-
+				/* SET DEFAULT CONTROL TYPE */
 				mouse();
 
+				/* LOAD AND SMOOTH MESH */
 				oLoad = new THREE.ObjectLoader();
 				oLoad.load('js/models/sample.min.js', function ( object ) {
-					/* LOAD AND SMOOTH MESH */
 					scene = object;
 					scene.children.forEach(function(obj3d){
 						if (obj3d instanceof THREE.Object3D) {
@@ -224,28 +225,27 @@
 
 					/* CREATE SKYBOX */
 					var urlPrefix = '/rvt3js/img/sky/',
-				    urls = [
-				      urlPrefix + 'posx.jpg',
-				      urlPrefix + 'negx.jpg',
-				      urlPrefix + 'negz.jpg',
-				      urlPrefix + 'posz.jpg',
-				      urlPrefix + 'posy.jpg',
-				      urlPrefix + 'negy.jpg'
-				    ],
-				    textureCube = THREE.ImageUtils.loadTextureCube(urls),
-				    shader = THREE.ShaderLib['cube'],
-				    uniforms = THREE.UniformsUtils.clone(shader.uniforms);
-				  	uniforms['tCube'].value = textureCube;
+					    urls = [
+					      urlPrefix + 'posx.jpg',
+					      urlPrefix + 'negx.jpg',
+					      urlPrefix + 'negz.jpg',
+					      urlPrefix + 'posz.jpg',
+					      urlPrefix + 'posy.jpg',
+					      urlPrefix + 'negy.jpg'
+					    ],
+					    textureCube = THREE.ImageUtils.loadTextureCube(urls),
+					    shader = THREE.ShaderLib['cube'],
+					    uniforms = THREE.UniformsUtils.clone(shader.uniforms);
+					  	uniforms['tCube'].value = textureCube;
 				  var skyMaterial = new THREE.ShaderMaterial({
 				      fragmentShader: shader.fragmentShader,
 				      vertexShader: shader.vertexShader,
 				      uniforms: uniforms,
 				      depthWrite: false,
 				      side: THREE.DoubleSide
-				    }),
-				    skyboxMesh = new THREE.Mesh(new THREE.BoxGeometry(100000, 100000, 100000, 1, 1, 1), skyMaterial);
-				  	scene.add(skyboxMesh);
-					/* END SKYBOX */
+			    }),
+			    skyboxMesh = new THREE.Mesh(new THREE.BoxGeometry(100000, 100000, 100000, 1, 1, 1), skyMaterial);
+			  	scene.add(skyboxMesh);
 
 					/* CREATE LIGHTS */
 					ambient = new THREE.AmbientLight( 0x404040 );
@@ -260,13 +260,11 @@
 						directional.shadowCameraRight = d;
 						directional.shadowCameraTop = d * 2;
 						directional.shadowCameraBottom = -d * 2;
-
 						directional.shadowCameraNear = 1000;
 						directional.shadowCameraFar = 20000;
-
 						scene.add(directional);
-					/* END LIGHTS */
 
+					/* FINAL FUNCTIONS BEFORE RENDER */
 					computeNormalsAndFaces();
 					THREEx.WindowResize(renderer, camera);
 					console.log('load complete!');
@@ -275,11 +273,10 @@
 						render()
 		        $('#mainContainer').fadeIn("slow",function(){});
 		      });
+				// END ONLOAD CALLBACK
 				});
 
-				controller.connect(function(){
-					console.log('connected!');
-				});
+				controller.connect(function(){console.log('connected!');});
 				controls.addEventListener( 'change', render );
 				addInfoListener();
 			}
