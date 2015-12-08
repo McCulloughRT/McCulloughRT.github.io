@@ -180,12 +180,12 @@
 				/* END RENDERER */
 
 				/* CREATE STATS OBJECT */
-				stats = new Stats();
-				stats.domElement.style.position = 'absolute';
-				stats.domElement.style.top = '10px';
-				stats.domElement.style.left = '10px';
-				stats.domElement.style.zIndex = 100;
-				container.appendChild( stats.domElement );
+				// stats = new Stats();
+				// stats.domElement.style.position = 'absolute';
+				// stats.domElement.style.top = '10px';
+				// stats.domElement.style.left = '10px';
+				// stats.domElement.style.zIndex = 100;
+				// container.appendChild( stats.domElement );
 				/* END STATS OBJECT */
 
 				camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 200000);
@@ -261,9 +261,9 @@
 					computeNormalsAndFaces();
 					THREEx.WindowResize(renderer, camera);
 					console.log('load complete!');
-					render()
-					
+
 		      $('#introContainer').fadeOut("slow", function(){
+						render()
 		        $('#mainContainer').fadeIn("slow",function(){});
 		      });
 				});
@@ -322,12 +322,6 @@
 			function stopAnim(){
 	      cancelAnimationFrame(idR);
 	    }
-
-			// function onWindowResize(){
-			// 	camera.aspect = window.innerWidth / window.innerHeight;
-			// 	camera.updateProjectionMatrix();
-			// 	renderer.setSize(window.innerwidth, window.innerHeight);
-			// }
 
 		</script>
 	</body>
