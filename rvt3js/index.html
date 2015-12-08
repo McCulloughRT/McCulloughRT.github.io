@@ -315,13 +315,13 @@
 
 			function twoHand(){
 				animLoop = true;
-				animate();
 				controls = new THREE.LeapTwoHandControls( camera, controller );
 					controls.translationSpeed = 180;
 					controls.rotationSpeed = 3;
 					controls.pinchThreshold = 0.9;
 					controls.transSmoothing = 1000;
 					controls.rotationSmoothing = 1;
+				animate();
 			}
 
 			function mouse() {
