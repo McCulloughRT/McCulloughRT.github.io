@@ -158,5 +158,5 @@ function clickHandler(event) {
   } else {
     msg.innerHTML = '';
   }
-  render();
+  if(animLoop == false) {render();}
 }

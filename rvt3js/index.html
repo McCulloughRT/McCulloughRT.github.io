@@ -145,6 +145,8 @@
 
 		<script>
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+			var animLoop = false;
+			var idM;
 			var container, camera, scene, renderer;
 			var controller, controls;
 			var oLoad;
@@ -277,17 +279,19 @@
 				});
 
 				controller.connect(function(){console.log('connected!');});
-				controls.addEventListener( 'change', render );
+				controls.addEventListener( 'change', function(){
+					if(animLoop == false) {render();}
+				} );
 				addInfoListener();
 			}
 
 			/* ANIMATE DEPRECATED ON STATIC SCENE */
-      // function animate(){
-			// 	requestAnimationFrame( animate );
-			// 	controls.update();
-			// 	stats.update();
-			// 	render();
-      // }
+      function animate(){
+				idM = requestAnimationFrame( animate );
+				controls.update();
+				stats.update();
+				render();
+      }
 
 			function render(){
 				renderer.render(scene, camera);
@@ -310,6 +314,8 @@
 			}
 
 			function twoHand(){
+				animLoop = true;
+				animate();
 				controls = new THREE.LeapTwoHandControls( camera, controller );
 					controls.translationSpeed = 180;
 					controls.rotationSpeed = 3;
@@ -319,14 +325,16 @@
 			}
 
 			function mouse() {
+				if (animLoop == true){stopAnim(idM);}
+				animLoop = false;
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
 					controls.enableDamping = true;
 					controls.dampingFactor = .75;
 					controls.enableZoom = true;
 			}
 
-			function stopAnim(){
-	      cancelAnimationFrame(idR);
+			function stopAnim(renderTarget){
+	      cancelAnimationFrame(renderTarget);
 	    }
 
 		</script>
