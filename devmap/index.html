@@ -96,7 +96,7 @@
         margin-left: auto;
         margin-right: auto;
         top: -5px;
-        min-height: 1334px;
+        min-height: 1000px;
       }
       #graphics {
         position:absolute;
@@ -186,7 +186,7 @@
     <script src="header.js"></script>
     <script>
       // try z15, r40, b50
-      $("#map").height($(window).height()-180);
+      $("#map").height($(window).innerHeight()-180);
       L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ.AamjhGik8yPxK5V71kzHdw';
       var url = 'https://api.github.com/repos/McCulloughRT/GISData/contents/pdx_newDev.geojson';
       var markers = L.mapbox.featureLayer();
