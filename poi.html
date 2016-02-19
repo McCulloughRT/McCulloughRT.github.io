@@ -182,7 +182,7 @@ function GetJson(request, category){
         var marker = L.marker(latlng, {
             icon: L.mapbox.marker.icon({
               'marker-color': ColorByFunction(category),
-              'marker-symbol': '',
+              'marker-symbol': 'circle',
               'marker-size': 'small'
             })
           })
