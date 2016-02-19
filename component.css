@@ -1,0 +1,212 @@
+body { margin:0; padding:0; }
+#map { position:absolute; top:91px; bottom:0; width:100%; }
+#header {
+	position: absolute;
+	height: 180px;
+	top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 1;
+}
+#ankrom-head{
+	-webkit-box-shadow: -9px 4px 26px -2px rgba(0,0,0,0.75);
+	-moz-box-shadow: -9px 4px 26px -2px rgba(0,0,0,0.75);
+	box-shadow: -9px 4px 26px -2px rgba(0,0,0,0.75);
+}
+#logo-head{
+	background: radial-gradient(50% 50%, rgb(199, 189, 184), rgb(160, 144, 136));
+	width: 100%;
+	height: 65px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20.5px;
+	font-weight: 300;
+	font-style: normal;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+#logo-head a{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20.5px;
+	font-weight: 300;
+	font-style: normal;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.nav-tabs {
+	height: 45px;
+}
+#marker-content {
+	padding-top: 20px;
+}
+#marker-content button {
+	width: 500px;
+	text-align: left;
+	margin-left: 0px;
+	font-size: 1em;
+}
+#editor {
+	position: absolute;
+	top: 86px;
+	right: 0;
+	bottom: 2%;
+	left: 9%;
+	width: 88%;
+}
+
+#menuBar {
+	width: 55px;
+	height: 100%;
+	float: left;
+	border-right-style: solid;
+	border-right-width: thin;
+	border-right-color: #CCCCCC;
+	background: #FFFFFF;
+}
+.edit-slide-menu {
+	background: #fbfbfb;
+	position: fixed;
+	width: 600px;
+	height: 100%;
+	top: 91px;
+	right: -545px;
+	z-index: 1000;
+
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+
+	-webkit-box-shadow: -2px -5px 25px -2px rgba(0,0,0,0.75);
+	-moz-box-shadow: -2px -5px 25px -2px rgba(0,0,0,0.75);
+	box-shadow: -2px -5px 25px -2px rgba(0,0,0,0.75);
+
+	overflow: auto;
+}
+.open-menu {
+	right: 0px;
+}
+.custom-popup .leaflet-popup-content-wrapper{
+	width: 450px;
+	border-radius: 10px;
+}
+.add-form[type="text"],
+.add-form[type="number"],
+.select2-search__field[type="search"]{
+	font-family: sans-serif;
+	font-size: 18px;
+}
+.radios input{
+	width:20px;
+}
+.add-form input,
+.select2-search__field{
+	width: 500px;
+}
+.add-form input,
+.add-form select,
+.add-form textarea,
+.select2-search__field input{
+	margin-bottom: 10px;
+	border-radius: 3px;
+
+	display: inline-block;
+	font-family: sans-serif;
+	font-size: 18px;
+	appearance: none;
+	box-shadow: none;
+	border-radius: none;
+}
+.add-form input[type="text"],
+.add-form input[type="number"],
+.select2-search__field input[type="search"],
+.add-form textarea{
+	padding: 10px;
+	border: solid 1px #dcdcdc;
+	transition: box-shadow 0.3s, border 0.3s;
+}
+.add-form input[type="text"]:focus,
+.add-form input[type="number"]:focus,
+.select2-search__field input[type="search"]:focus,
+.add-form textarea:focus{
+	outline: none:
+	border: solid 1px #707070;
+	box-shadow: 0 0 5px 1px #969696;
+}
+#popUpBox {
+	width: 448px;
+	height: 100%;
+	margin-top: 5px;
+	text-align: center;
+}
+#popUpBox table {
+	text-align: left;
+	width:90%;
+	/*height: 100px;*/
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	margin-bottom: 10px;
+	table-layout: fixed;
+	/*border: 1px solid black;*/
+}
+#popUpBox td,
+#popUpBox th{
+	padding-left:15px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#popUpTitle {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 1.75em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+#EditModal-top-level,
+#AddModal-top-level {
+	font-family: 'Open Sans', sans-serif;
+	letter-spacing: .5px;
+}
+#menuBar2 button{
+	width: 85px;
+}
+#menuBar2{
+	width: 90px;
+	position: absolute;
+	right: 10px;
+	top: 105px;
+	z-index: 2;
+}
+#adminButtons{
+	position:absolute;
+	left: 80px;
+	bottom:10px;
+	z-index: 1;
+}
+#colorLegend{
+	width: 90px;
+	position: absolute;
+	right: 10px;
+	top: 230px;
+	background-color: rgba(255,255,255,.5);
+	z-index: 2;
+	font-family: 'Open Sans', sans-serif;
+	font-size: .8em;
+}
+.legendItem{
+	margin-bottom: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+.colorbox{
+	width:10px;
+	height:10px;
+}
