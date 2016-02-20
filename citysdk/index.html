@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+    <script type="text/javascript" src="./js/citysdk.js"></script>
+    <script type="text/javascript" src="./js/citysdk.census.js"></script>
+  </head>
+  <body>
+    <script>
+      var map;
+      var sdk = new CitySDK();
+      var census = sdk.modules.census;
+
+      var request = {
+          state: "MO",
+          level: "state",
+          sublevel: true
+      }
+
+      census.GEORequest(request, function(response){
+        console.log(response);
+      });
+    </script>
+  </body>
+</html>
