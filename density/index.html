@@ -133,7 +133,7 @@
       <a href="#">Ankrom Moisan Architects&nbsp&nbsp</a><span style="color:rgb(80,80,80);">/</span><a href="#"> Mapping and Data Analysis</a>
     </p>
   </div>
-  <div id="black-head" style="background-color: black; width: 100%; height: 10px; margin-top: 1px;"></div>
+  <div id="black-head" style="background-color: black; width: 100%; height: 20px; margin-top: 1px;"><a href="#" id="discBtn" style="float:right; margin-top:3px; margin-right:20px; font-size:.8em; color:#FC992B;">Disclaimer</a></div>
 </div>
 <div class="col-md-2 main"></div>
 <div class="col-md-8 main" id="centerCol">
@@ -200,6 +200,9 @@
 <div class="col-md-2 main"></div>
 </div>
 <script>
+$('#discBtn').on('click',function(){
+  alert('This site is intended to provide a public outlet for in-progress research that Ankrom Moisan Architects is conducting. All of the data presented here is provided in a spirit of sharing ideas about the development of cities. It is intended for general interest usage and should not be used as a basis for financial decisions.');
+})
 L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ.AamjhGik8yPxK5V71kzHdw';
   var densityMap = L.mapbox.map('densityMap', 'mapbox.light').setView([45.5200, -122.6819], 13);
   var transitMap = L.mapbox.map('transitMap', 'mapbox.light').setView([45.5200, -122.6819], 13);
