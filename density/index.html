@@ -8,13 +8,8 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700' rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-<!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
@@ -24,6 +19,7 @@
     padding:0;
     -webkit-font-smoothing: antialiased;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    background-color: #e6e1df;
   }
   .map {
     width:100%;
@@ -99,20 +95,51 @@
     font-family: 'Merriweather', serif;
     font-weight: 300;
   }
+  #ankrom-head{
+    margin-bottom: 40px;
+  }
+  #logo-head{
+    background: radial-gradient(50% 50%, rgb(199, 189, 184), rgb(160, 144, 136));
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20.5px;
+    font-weight: 300;
+    font-style: normal;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  #logo-head a{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20.5px;
+    font-weight: 300;
+    font-style: normal;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
 </style>
 </head>
 <body>
-<div id="introContainer" hidden>
-  <div id="loadtext">Loading...</div>
-</div>
 <div id="mainContainer">
-<!-- <div id='map'></div> -->
+<div id="ankrom-head">
+  <div id="logo-head">
+    <img src="img/logo.png" style="float: left; margin-top: 17px; margin-left: 50px;">
+    <p style="padding-top: 25px;padding-right:110px">
+      <a href="#">Ankrom Moisan Architects&nbsp&nbsp</a><span style="color:rgb(80,80,80);">/</span><a href="#"> Mapping and Data Analysis</a>
+    </p>
+  </div>
+  <div id="black-head" style="background-color: black; width: 100%; height: 10px; margin-top: 1px;"></div>
+</div>
 <div class="col-md-2 main"></div>
 <div class="col-md-8 main" id="centerCol">
   <div class="header">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" style="margin-bottom:50px;">
       <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -120,20 +147,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- <a class="navbar-brand" href="#">Ankrom Moisan Architects</a> -->
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="./index.html">Maps</a></li>
             <li><a href="./method.html" target="_blank">Methodology</a></li>
           </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+        </div>
+      </div>
     </nav>
 
-    <span style="font-size:3.5em;">Density and Transit</span><br /><span style="font-size:2em">Studying relationships</span><br /><br /><hr><br />
+    <span style="font-size:3.5em;">Density and Transit</span><br /><span style="font-size:2em">Studying relationships</span><br /><br /><br /><hr><br />
   </div>
   <div class="mapContainer">
     <div id="headertext" style="width:80%; margin-left:auto; margin-right:auto;">
@@ -145,6 +169,7 @@
         This study investigates if there are sites in Portland where transit is plentiful but housing density is still sparse.
       </p>
     </div>
+    <hr><br />
 
     <span>Housing Density</span>
     <p style="font-size: .65em;width:90%; text-align: justify;margin-top:15px;">
@@ -204,35 +229,30 @@ L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdke
         block.NEW_SCORE = block.TRANSIT_SCORE_IMP;
       }
     }
-  
+
     densityLayer.addData(data);
     transitLayer.addData(data);
     finalLayer.addData(data);
-    // $('#introContainer').fadeOut("slow", function(){
-    //   $('#mainContainer').fadeIn("slow",function(){});
-    // });
   });
 
-
-
   function getStyleDensity(feature) {
-      return {
-          weight: 1,
-          opacity: 0.1,
-          color: 'black',
-          fillOpacity: 0.7,
-          fillColor: getColorDensity(feature.properties.HOUSE_DENSITY)
-      };
+    return {
+      weight: 1,
+      opacity: 0.1,
+      color: 'black',
+      fillOpacity: 0.7,
+      fillColor: getColorDensity(feature.properties.HOUSE_DENSITY)
+    };
   }
   function getColorDensity(d) {
-      return d > 24.5 ? '#084594' :
-          d > 21  ? '#2171b5' :
-          d > 17.5  ? '#4292c6' :
-          d > 14  ? '#6baed6' :
-          d > 10.5   ? '#9ecae1' :
-          d > 7   ? '#c6dbef' :
-          d > 3.5   ? '#deebf7' :
-          '#f7fbff';
+    return d > 24.5 ? '#084594' :
+      d > 21  ? '#2171b5' :
+      d > 17.5  ? '#4292c6' :
+      d > 14  ? '#6baed6' :
+      d > 10.5   ? '#9ecae1' :
+      d > 7   ? '#c6dbef' :
+      d > 3.5   ? '#deebf7' :
+      '#f7fbff';
   }
   densityMap.legendControl.addLegend(getLegendDensityHTML());
   function getLegendDensityHTML() {
@@ -253,23 +273,23 @@ L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdke
   }
 
   function getStyleTransit(feature) {
-      return {
-          weight: 1,
-          opacity: 0.1,
-          color: 'black',
-          fillOpacity: 0.7,
-          fillColor: getColorTransit(feature.properties.TRANSIT_SCORE_IMP)
-      };
+    return {
+      weight: 1,
+      opacity: 0.1,
+      color: 'black',
+      fillOpacity: 0.7,
+      fillColor: getColorTransit(feature.properties.TRANSIT_SCORE_IMP)
+    };
   }
   function getColorTransit(d) {
-      return d > 28 ? '#084594' :
-          d > 24  ? '#2171b5' :
-          d > 20  ? '#4292c6' :
-          d > 16  ? '#6baed6' :
-          d > 12   ? '#9ecae1' :
-          d > 8   ? '#c6dbef' :
-          d > 4   ? '#deebf7' :
-          '#f7fbff';
+    return d > 28 ? '#084594' :
+      d > 24  ? '#2171b5' :
+      d > 20  ? '#4292c6' :
+      d > 16  ? '#6baed6' :
+      d > 12   ? '#9ecae1' :
+      d > 8   ? '#c6dbef' :
+      d > 4   ? '#deebf7' :
+      '#f7fbff';
   }
   transitMap.legendControl.addLegend(getLegendTransitHTML());
   function getLegendTransitHTML() {
@@ -290,23 +310,23 @@ L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdke
   }
 
   function getStyleFinal(feature) {
-      return {
-          weight: 1,
-          opacity: 0.1,
-          color: 'black',
-          fillOpacity: 0.7,
-          fillColor: getColorFinal(feature.properties.NEW_SCORE)
-      };
+    return {
+      weight: 1,
+      opacity: 0.1,
+      color: 'black',
+      fillOpacity: 0.7,
+      fillColor: getColorFinal(feature.properties.NEW_SCORE)
+    };
   }
   function getColorFinal(d) {
-      return d > 42 ? '#084594' :
-          d > 36  ? '#2171b5' :
-          d > 30  ? '#4292c6' :
-          d > 24  ? '#6baed6' :
-          d > 18   ? '#9ecae1' :
-          d > 12   ? '#c6dbef' :
-          d > 6   ? '#deebf7' :
-          '#f7fbff';
+    return d > 42 ? '#084594' :
+      d > 36  ? '#2171b5' :
+      d > 30  ? '#4292c6' :
+      d > 24  ? '#6baed6' :
+      d > 18   ? '#9ecae1' :
+      d > 12   ? '#c6dbef' :
+      d > 6   ? '#deebf7' :
+      '#f7fbff';
   }
   finalMap.legendControl.addLegend(getLegendFinalHTML());
   function getLegendFinalHTML() {
