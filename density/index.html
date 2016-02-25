@@ -174,29 +174,6 @@
 </div>
 <div class="col-md-2 main"></div>
 </div>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.js"></script>
-<script>
-  /* LOADING ANIMATION */
-  var idR;
-  var i_scene = new THREE.Scene();
-  var i_aspect = window.innerWidth / window.innerHeight;
-  var i_camera = new THREE.PerspectiveCamera(75, i_aspect, 0.1, 1000);
-  var i_renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  i_renderer.setSize(window.innerWidth, window.innerHeight);
-  document.getElementById("introContainer").appendChild(i_renderer.domElement);
-  var i_geometry = new THREE.BoxGeometry(1,1,1);
-  var i_material = new THREE.MeshNormalMaterial();
-  var i_cube = new THREE.Mesh(i_geometry, i_material);
-  i_scene.add(i_cube);
-  i_camera.position.z = 5;
-  var i_render = function () {
-    idR = requestAnimationFrame(i_render);
-    i_cube.rotation.x += 0.03;
-    i_cube.rotation.y += 0.03;
-    i_renderer.render(i_scene, i_camera);
-  };
-  i_render();
-</script> -->
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ.AamjhGik8yPxK5V71kzHdw';
   var densityMap = L.mapbox.map('densityMap', 'mapbox.light').setView([45.5200, -122.6819], 13);
@@ -219,63 +196,20 @@ L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdke
     onEachFeature: onEachFeature
   }).addTo(finalMap);
 
-  // $.get('./ajax/minifiedData.json', function(data){
-  //   for(var i=0;i<data.features.length;i++){
-  //     var block = data.features[i].properties;
-  //     if(block.HOUSE_DENSITY < 0.1){
-  //       block.NEW_SCORE = block.TRANSIT_SCORE_IMP;
-  //     }
-  //   }
-  //   // var densityWorker = new Worker("js/AddData.js");
-  //   // var transitWorker = new Worker("js/AddData.js");
-  //   // var finalWorker = new Worker("js/AddData.js");
-  //
-  //   // densityWorker.postMessage(data);
-  //   // transitWorker.postMessage(data]);
-  //   // finalWorker.postMessage(data]);
-  //
-  //   // var messageCounter;
-  //   // densityWorker.onmessage = function(e){
-  //   //   messageCounter += e;
-  //   // }
-  //   // transitWorker.onmessage = function(e){
-  //   //   messageCounter += e;
-  //   // }
-  //   // finalWorker.onmessage = function(e){
-  //   //   messageCounter += e;
-  //   // }
-  //
-  //   densityLayer.addData(data);
-  //   transitLayer.addData(data);
-  //   finalLayer.addData(data);
-  //   // $('#introContainer').fadeOut("slow", function(){
-  // 	// 	// render()
-  //   //   $('#mainContainer').fadeIn("slow",function(){});
-  //   // });
-  // });
-  var url = 'https://api.github.com/repos/McCulloughRT/GISData/contents/minifiedData.json';
-  $.ajax({
-    headers: {
-      'Accept': 'application/vnd.github.v3.raw'
-    },
-    xhrFields: {
-      withCredentials: false
-    },
-    dataType: 'json',
-    url: url,
-    async: true,
-    success: function(data) {
-      for(var i=0;i<data.features.length;i++){
-        var block = data.features[i].properties;
-        if(block.HOUSE_DENSITY < 0.1){
-          block.NEW_SCORE = block.TRANSIT_SCORE_IMP;
-        }
+  $.get('https://s3-us-west-2.amazonaws.com/s3arch-dev/minifiedData.json', function(raw){
+    var data = JSON.parse(raw);
+    for(var i=0;i<data.features.length;i++){
+      var block = data.features[i].properties;
+      if(block.HOUSE_DENSITY < 0.1){
+        block.NEW_SCORE = block.TRANSIT_SCORE_IMP;
       }
-      densityLayer.addData(data);
-      transitLayer.addData(data);
-      finalLayer.addData(data);
     }
+  
+    densityLayer.addData(data);
+    transitLayer.addData(data);
+    finalLayer.addData(data);
   });
+
 
 
   function getStyleDensity(feature) {
