@@ -102,10 +102,10 @@
 </style>
 </head>
 <body>
-<div id="introContainer" hidden>
+<div id="introContainer">
   <div id="loadtext">Loading...</div>
 </div>
-<div id="mainContainer" >
+<div id="mainContainer" hidden>
 <!-- <div id='map'></div> -->
 <div class="col-md-2 main"></div>
 <div class="col-md-8 main" id="centerCol">
@@ -208,6 +208,9 @@ L.mapbox.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdke
     densityLayer.addData(data);
     transitLayer.addData(data);
     finalLayer.addData(data);
+    $('#introContainer').fadeOut("slow", function(){
+      $('#mainContainer').fadeIn("slow",function(){});
+    });
   });
 
 
