@@ -99,8 +99,9 @@ https://api.foursquare.com/v2/venues/search?client_id=UDYSZVLVUI0OHJ04X0VQPT2O0I
 <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibW9udHltb29zZTIxIiwiYSI6IjZGdDZJZlEifQ.HmDYRXH_GXbIgELZTJ18Nw';
-var map = L.mapbox.map('map', 'mapbox://styles/montymoose21/cimqkm1ja00kvb3klibkf6fyv')
+var map = L.mapbox.map('map')
     .setView([47.6178291, -122.3383725], 16);
+L.mapbox.styleLayer('mapbox://styles/montymoose21/cimqkm1ja00kvb3klibkf6fyv').addTo(map);
 
 // Credit Foursquare for their wonderful data
 map.attributionControl
