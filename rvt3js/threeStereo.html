@@ -42,6 +42,7 @@
 		<script src="js/controls/LeapPointerControls.js"></script>
 		<script src="js/controls/LeapEyeLookControls.js"></script>
 		<script src="js/controls/OrbitControls.js"></script>
+		<script src="js/controls/DeviceOrientationControls.js"></script>
 		<!-- <script src="js/controls/VRControls.js"></script>
 		<script src="js/VREffect.js"></script> -->
 		<script src="js/StereoEffect.js"></script>
@@ -176,7 +177,7 @@
 				controller.connect(function(){
 					console.log('connected!');
 				});
-				mouse();
+				orientation();
 			}
 
 			function onWindowResize(){
@@ -196,11 +197,12 @@
 
       function animate(){
 				requestAnimationFrame( animate );
+				controls.update();
 				render();
       }
 
 			function render(){
-				controls.update();
+
 				// vrControls.update();
 				// vrEffect.render(scene, camera);
 				//
@@ -245,6 +247,10 @@
 					controls.enableDamping = true;
 					controls.dampingFactor = .75;
 					controls.enableZoom = true;
+			}
+
+			function orientation(){
+				controls = new THREE.DeviceOrientationControls( camera );
 			}
 
 		</script>
