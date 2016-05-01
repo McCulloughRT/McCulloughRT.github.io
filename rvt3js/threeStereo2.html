@@ -47,28 +47,22 @@
 			var effect;
 			var fullScreenButton;
 			var subdivs = 0;
-
 			init();
 			animate();
-
 			function init() {
 				scene = new THREE.Scene();
 				setupScene();
 			}
-
 			function onWindowResize(){
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
-
 				effect.setSize(window.innerWidth, window.innerHeight);
 			}
-
       function animate(){
 				requestAnimationFrame( animate );
 				controls.update();
 				effect.render( scene, camera );
       }
-
 			function setupScene() {
 				/* CREATE SKYBOX */
 				var urlPrefix = '/rvt3js/img/sky/',
@@ -84,7 +78,6 @@
 			    shader = THREE.ShaderLib['cube'],
 			    uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 			  uniforms['tCube'].value = textureCube;
-
 			  var skyMaterial = new THREE.ShaderMaterial({
 			      fragmentShader: shader.fragmentShader,
 			      vertexShader: shader.vertexShader,
@@ -95,26 +88,19 @@
 			    skyboxMesh = new THREE.Mesh(new THREE.BoxGeometry(100000, 100000, 100000, 1, 1, 1), skyMaterial);
 			  scene.add(skyboxMesh);
 				/* END SKYBOX */
-
 				camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 100000);
 				camera.position.set(15000,15000,15000);
-
 				controls = new THREE.DeviceOrientationControls( camera );
-
 				renderer = new THREE.WebGLRenderer( { antialias: true, alpha:  true } );
 				renderer.setPixelRatio(window.devicePixelRatio);
 				renderer.setClearColor( 0xf0f0f0 );
 				renderer.setSize(window.innerWidth, window.innerHeight);
 				renderer.sortObjects = false;
-
 				effect = new THREE.StereoEffect( renderer );
 				effect.setSize( window.innerWidth, window.innerHeight );
-
 				container = document.getElementById( 'container' );
 				container.appendChild( renderer.domElement );
-
 				window.addEventListener( 'resize', onWindowResize, false);
-
 				oLoad = new THREE.ObjectLoader();
 				oLoad.load('js/models/sample.rvt.js', function ( object ) {
 					/* BETA FEATURE */
@@ -141,7 +127,6 @@
 					/* END BETA FEATURE */
 					console.log('load complete!');
 				});
-
 				// Lights
 				var ambient = new THREE.AmbientLight( 0x404040 );
 					scene.add( ambient);
@@ -155,10 +140,8 @@
 					directional.shadowCameraRight = d;
 					directional.shadowCameraTop = d * 2;
 					directional.shadowCameraBottom = -d * 2;
-
 					directional.shadowCameraNear = 1000;
 					directional.shadowCameraFar = 20000;
-
 					scene.add(directional);
 			}
 		</script>

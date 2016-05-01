@@ -57,7 +57,7 @@
 				padding: 8px;
 				color: #FFF;
 				background-color: #555;
-				width: 123px;
+				width: 160px;
 				margin-top: 8px;
 			}
 
@@ -97,7 +97,10 @@
 					Leap Point
 				</div>
 				<div class="button vr">
-					VR Display
+					WebVR <br />(Oculus Rift only)
+				</div>
+				<div class="button stereo">
+					StereoVR <br />(mobile only)
 				</div>
 			</div>
 			<div style='background-color: #ccc; left: 20px; opacity: 0.85; position: absolute; top: 20px;'>
@@ -160,11 +163,13 @@
 			var grabBtn = document.querySelector( '.leap-ctrl' );
 			var pntBtn = document.querySelector( '.leapP-ctrl' );
 			var vrBtn = document.querySelector( '.vr' );
+			var stereoBtn = document.querySelector( '.stereo' );
 
 			mouseBtn.onclick = function(){mouse();};
 			grabBtn.onclick = function(){twoHand();};
 			pntBtn.onclick = function(){pointer();};
-			vrBtn.onclick = function(){window.location = "threeVR.html";}
+			vrBtn.onclick = function(){window.location = "threeVR.html";};
+			stereoBtn.onclick = function(){window.location = "threeStereo2.html";};
 			clkBtn.onclick = function(){
 				if ($('.description-event').hasClass('active')){
 					$('.description-event').removeClass('active');
