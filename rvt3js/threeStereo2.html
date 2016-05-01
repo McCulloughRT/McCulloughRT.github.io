@@ -35,85 +35,39 @@
 		</div>
 		<div id="container"></div>
 
-		<!-- <script src="js/leap.min.js"></script> -->
-
 		<script src="js/three.min.js"></script>
-		<!-- <script src="js/controls/LeapTwoHandControls.js"></script>
-		<script src="js/controls/LeapPointerControls.js"></script>
-		<script src="js/controls/LeapEyeLookControls.js"></script>
-		<script src="js/controls/OrbitControls.js"></script> -->
 		<script src="js/controls/DeviceOrientationControls.js"></script>
-		<!-- <script src="js/controls/VRControls.js"></script>
-		<script src="js/VREffect.js"></script> -->
 		<script src="js/StereoEffect.js"></script>
 		<script src="js/SubdivisionModifier.js"></script>
 
 		<script>
 			var container, camera, scene, renderer;
-			var controller, controls;
+			var controls;
 			var oLoad;
-			// var vrEffect;
-			// var vrControls;
-			var effect
+			var effect;
 			var fullScreenButton;
 			var subdivs = 0;
-
-			var windowHalfX = window.innerWidth / 2;
-			var windowHalfY = window.innerHeight / 2;
 
 			init();
 			animate();
 
-
-
 			function init() {
-				// controller = new Leap.Controller();
 				scene = new THREE.Scene();
-
 				setupScene();
-
-				// controller.connect(function(){
-				// 	console.log('connected!');
-				// });
-				//orientation();
 			}
 
 			function onWindowResize(){
-				// windowHalfX = window.innerWidth / 2;
-				// windowHalfY = window.innerHeight / 2;
-
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
 
 				effect.setSize(window.innerWidth, window.innerHeight);
 			}
 
-			// function onDocumentMouseMove( event ) {
-			// 	mouseX = (event.clientX - windowHalfX ) * 10;
-			// 	mouseY = (event.clientY - windowHalfY ) * 10;
-			// }
-
       function animate(){
 				requestAnimationFrame( animate );
 				controls.update();
 				effect.render( scene, camera );
-				//render();
       }
-
-			function render(){
-				effect.render( scene, camera );
-			}
-
-			function mouse() {
-				controls = new THREE.OrbitControls( camera, renderer.domElement );
-					controls.enableDamping = true;
-					controls.dampingFactor = .75;
-					controls.enableZoom = true;
-			}
-
-			function orientation(){
-				controls = new THREE.DeviceOrientationControls( camera );
-			}
 
 			function setupScene() {
 				/* CREATE SKYBOX */
@@ -148,35 +102,18 @@
 				controls = new THREE.DeviceOrientationControls( camera );
 
 				renderer = new THREE.WebGLRenderer( { antialias: true, alpha:  true } );
-
 				renderer.setPixelRatio(window.devicePixelRatio);
-				// fullScreenButton = document.querySelector( '.full-screen' );
-				// if (navigator.getVRDevices === undefined ){
-				// 	fullScreenButton.innerHTML = 'Your browser doesn\'t support WebVR';
-				// 	fullScreenButton.classList.add('error');
-				// }
-				// vrControls = new THREE.VRControls( camera );
-				// vrEffect = new THREE.VREffect( renderer, function (error) {
-				// 	fullScreenButton.innerHTML = error;
-				// 	fullScreenButton.classList.add('error');
-				// });
-				//
-				// fullScreenButton.onclick = function() {
-				// 	vrEffect.setFullScreen( true );
-				// };
-
 				renderer.setClearColor( 0xf0f0f0 );
 				renderer.setSize(window.innerWidth, window.innerHeight);
 				renderer.sortObjects = false;
 
-				container = document.getElementById( 'container' );
-				container.appendChild( renderer.domElement );
-
 				effect = new THREE.StereoEffect( renderer );
 				effect.setSize( window.innerWidth, window.innerHeight );
 
-				window.addEventListener( 'resize', onWindowResize, false);
+				container = document.getElementById( 'container' );
+				container.appendChild( renderer.domElement );
 
+				window.addEventListener( 'resize', onWindowResize, false);
 
 				oLoad = new THREE.ObjectLoader();
 				oLoad.load('js/models/sample.rvt.js', function ( object ) {
@@ -224,7 +161,6 @@
 
 					scene.add(directional);
 			}
-
 		</script>
 	</body>
 </html>
