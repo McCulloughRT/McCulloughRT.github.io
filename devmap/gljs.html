@@ -20,25 +20,22 @@ mapboxgl.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdke
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v8',
-    center: [-96, 37.8],
-    zoom: 3
+    center: [-122.6819,45.5200],
+    zoom: 14
 });
 
 map.on('load', function () {
-    // AJAX Load GeoJSON from GitHub
-    var url = 'https://api.github.com/repos/McCulloughRT/GISData/contents/newGeoData.json';
     $.ajax({
-      headers: {
-        'Accept': 'application/vnd.github.v3.raw'
-      },
-      xhrFields: {
-        withCredentials: false
-      },
       dataType: 'json',
-      url: url,
+      url: 'https://s3-us-west-2.amazonaws.com/s3arch-dev/minifiedData.json',
       async: true,
-      success: function(geojson) {
-        map.addSource("polys", geojson);
+      success: function(geojson){
+        var features = {
+          "type": "geojson",
+          "data": geojson
+        };
+
+        map.addSource("polys", features);
         map.addLayer({
           'id': 'test',
           'type': 'fill',
