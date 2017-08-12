@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import { json as requestJson } from 'd3-request';
+import Waypoint from 'react-waypoint';
+
 import Navigation from './navigation';
 import HeroHeader from './hero_header';
 import About from './about';
@@ -14,11 +16,26 @@ export default class App extends Component {
         windowWidth: window.innerWidth,
         projects: [],
         about: {},
-        me: {}
+        me: {},
+        waypointPassed: false
       };
 
       this._updateDimensions = this._updateDimensions.bind(this);
       this._orientationChange = this._orientationChange.bind(this);
+      this._onLeaveHandler = this._onLeaveHandler.bind(this);
+      this._onEnterHandler = this._onEnterHandler.bind(this);
+    }
+
+    _onLeaveHandler() {
+      this.setState({
+        waypointPassed: true
+      });
+    }
+
+    _onEnterHandler() {
+      this.setState({
+        waypointPassed: false
+      });
     }
 
     _orientationChange() {
@@ -61,13 +78,13 @@ export default class App extends Component {
     }
 
     render() {
-        const text = 'typing something';
-        const { windowHeight, windowWidth, projects, about, me } = this.state;
+        const { windowHeight, windowWidth, projects, about, me, waypointPassed } = this.state;
 
         return (
           <div>
-            {/* <Navigation /> */}
+            <Navigation waypointPassed={ waypointPassed } />
             <HeroHeader height={ windowHeight } width={ windowWidth }/>
+            <Waypoint onLeave={ this._onLeaveHandler } onEnter={ this._onEnterHandler}/>
             <About text={ about }/>
             <Portfolio width={ windowWidth } items={ projects }/>
             <Me text={ me }/>

@@ -10,9 +10,10 @@ export default class Me extends Component {
 
   bookList(books) {
     if(books === undefined) return '';
-    return books.map(book => {
+    return books.map((book,i) => {
+      const key = 'book_' + i;
       return (
-        <li className='bookLi' style={ style.books }>
+        <li className='bookLi' style={ style.books } key={ key }>
           <a href={ book.link } target='_blank' className='bookTitle' style={ style.bookTitle }>{ book.title }</a>
           <br />
           <div className='bookBy' style={ style.by }>by <div className='bookAuthor' style={ style.author }>{ book.author }</div></div>
@@ -23,9 +24,10 @@ export default class Me extends Component {
 
   articleList(articles) {
     if(articles === undefined) return '';
-    return articles.map(article => {
+    return articles.map((article,i) => {
+      const key = 'article_' + i;
       return (
-        <li className='articleLi' style={{ fontWeight: '400', paddingBottom: '40px', fontStyle: 'italic' }}>
+        <li className='articleLi' style={{ fontWeight: '400', paddingBottom: '40px', fontStyle: 'italic' }} key={ key }>
           <a href={ article.link } target='_blank' className='articleTitle' style={ style.bookTitle }>{ article.title }</a>
           <br />
           <span className='articleAuthor' style={ style.author }>{ article.author }</span>
@@ -36,9 +38,7 @@ export default class Me extends Component {
 
   render() {
     const { books, articles } = this.props.text;
-    console.log('books: ', books);
-    console.log('articles: ', articles);
-    console.log(this.props.text);
+
     return (
       <section id='me' style={{ position: 'relative', background:'#F9F9F9', padding: '70px', fontFamily: 'Montserrat' }}>
         <div className='container'>

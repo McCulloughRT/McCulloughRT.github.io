@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Lightbox from 'react-images';
-// import items from '../data/projects';
+
 import CATEGORY from '../data/categoryEnum';
 
 export default class Portfolio extends Component {
@@ -50,7 +50,6 @@ export default class Portfolio extends Component {
   }
 
   changeCategory(event) {
-    console.log(event.target.id);
     this.setState({ selectedCategory: CATEGORY[event.target.id] });
   }
 
@@ -84,18 +83,13 @@ export default class Portfolio extends Component {
     // Group items by twos
     let groupedItems = [];
     for (var i = 0; i < filteredItems.length; i += 2) {
-      console.log(i);
       const itemOne = filteredItems[i];
       const itemTwo = i+1 < filteredItems.length ? filteredItems[i+1] : null;
       groupedItems.push([itemOne,itemTwo]);
     }
-    console.log(filteredItems);
-    console.log(groupedItems);
 
     return groupedItems.map((item,idx) => {
-      // console.log(item);
       const rowItems = item.map(e => {
-        console.log(e);
         if(e == null) return null;
         const { text, imageUrl, link, images } = e;
 
@@ -135,33 +129,6 @@ export default class Portfolio extends Component {
         </div>
       );
     });
-
-    // return filteredItems.map((item,idx) => {
-    //   const { text, imageUrl, link, images } = item;
-    //
-    //   const btnType = link === '' ?
-    //   <a href='#' className='btn btn-primary' onClick={ e => this.openLightbox(images, e) }>View Images</a>
-    //   :
-    //   <a href={ link } className='btn btn-primary' target='_blank'>Visit Website</a>
-    //
-    //   return (
-    //     <section style={ style.sectionItem } key={ idx }>
-    //       <div className='row'>
-    //         <div className='col-md-6' style={{ marginBottom: '40px', textAlign: align }}>
-    //           <div>
-    //             <h3 style={ style.projectTitle }>{ text.title }</h3>
-    //             <span style={ style.projectTags }>{ text.tags }</span>
-    //             <p style={ style.projectDescription }>{ text.description }</p>
-    //             { btnType }
-    //           </div>
-    //         </div>
-    //         <div className='col-md-6'>
-    //           <img src={ imageUrl } style={{ maxHeight:'100%', maxWidth:'100%' }} />
-    //         </div>
-    //       </div>
-    //     </section>
-    //   )
-    // });
   }
 
   render() {

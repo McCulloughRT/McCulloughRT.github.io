@@ -17,7 +17,8 @@
     "react-dom": "^15.4.1",
     "react-images": "^0.5.5",
     "react-select-plus": "^1.0.0-rc.5",
-    "react-typist": "^1.1.1"
+    "react-typist": "^1.1.1",
+    "react-waypoint": "^7.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
