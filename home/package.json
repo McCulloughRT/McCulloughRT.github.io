@@ -7,7 +7,7 @@
     "start-local": "webpack-dev-server --env.local --progress --hot --port 3030 --open",
     "start": "webpack-dev-server --progress --hot --host 0.0.0.0 --port 3030 --open",
     "build": "NODE_ENV=production webpack --env.prod=true",
-    "buildS": "webpack --optimize-minimize --define process.env.NODE_ENV='production'"
+    "buildS": "NODE_ENV=production webpack --optimize-minimize --env.prod=true"
   },
   "dependencies": {
     "d3-request": "^1.0.5",
