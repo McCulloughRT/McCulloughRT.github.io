@@ -12,7 +12,9 @@ export default class App extends Component {
       this.state = {
         windowHeight: window.innerHeight,
         windowWidth: window.innerWidth,
-        projects: []
+        projects: [],
+        about: {},
+        me: {}
       };
 
       this._updateDimensions = this._updateDimensions.bind(this);
@@ -39,10 +41,18 @@ export default class App extends Component {
     componentDidMount() {
       window.addEventListener('resize', this._updateDimensions);
       window.addEventListener('orientationchange', this._orientationChange);
-      requestJson('https://s3-us-west-2.amazonaws.com/s3arch-dev/projects.json', (error, response) => {
+      requestJson('http://mcculloughrt.github.io/home/data/projects.json', (error, response) => {
         if(error) console.log(error);
         this.setState({ projects: response });
-      })
+      });
+      requestJson('http://mcculloughrt.github.io/home/data/about.json', (error, response) => {
+        if(error) console.log(error);
+        this.setState({ about: response });
+      });
+      requestJson('http://mcculloughrt.github.io/home/data/me.json', (error, response) => {
+        if(error) console.log(error);
+        this.setState({ me: response });
+      });
     }
 
     componentWillUnmount() {
@@ -52,15 +62,15 @@ export default class App extends Component {
 
     render() {
         const text = 'typing something';
-        const { windowHeight, windowWidth, projects } = this.state;
+        const { windowHeight, windowWidth, projects, about, me } = this.state;
 
         return (
           <div>
             {/* <Navigation /> */}
             <HeroHeader height={ windowHeight } width={ windowWidth }/>
-            <About />
+            <About text={ about }/>
             <Portfolio width={ windowWidth } items={ projects }/>
-            <Me />
+            <Me text={ me }/>
           </div>
         );
     }

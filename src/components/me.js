@@ -9,6 +9,7 @@ export default class Me extends Component {
   }
 
   bookList(books) {
+    if(books === undefined) return '';
     return books.map(book => {
       return (
         <li className='bookLi' style={ style.books }>
@@ -21,6 +22,7 @@ export default class Me extends Component {
   }
 
   articleList(articles) {
+    if(articles === undefined) return '';
     return articles.map(article => {
       return (
         <li className='articleLi' style={{ fontWeight: '400', paddingBottom: '40px', fontStyle: 'italic' }}>
@@ -33,6 +35,10 @@ export default class Me extends Component {
   }
 
   render() {
+    const { books, articles } = this.props.text;
+    console.log('books: ', books);
+    console.log('articles: ', articles);
+    console.log(this.props.text);
     return (
       <section id='me' style={{ position: 'relative', background:'#F9F9F9', padding: '70px', fontFamily: 'Montserrat' }}>
         <div className='container'>
@@ -96,47 +102,6 @@ function socialLinks() {
     </div>
   )
 }
-
-const books = [
-  {
-    "title": "The New Urban Crisis",
-    "author": "Richard Florida",
-    "link": "https://www.amazon.com/New-Urban-Crisis-Increasing-Segregation/dp/0465079741"
-  },
-  {
-    "title": "Sapiens: A Brief History of Humankind",
-    "author": "Yuval Noah Harari",
-    "link": "https://www.amazon.com/Sapiens-Humankind-Yuval-Noah-Harari/dp/0062316095"
-  },
-  {
-    "title": "Machine Learning Yearning (Draft Copy)",
-    "author": "Andrew Ng",
-    "link": "http://www.mlyearning.org/"
-  },
-];
-
-const articles = [
-  {
-    "title": "Democratizing Data at Airbnb",
-    "author": "Medium",
-    "link": "https://medium.com/airbnb-engineering/democratizing-data-at-airbnb-852d76c51770"
-  },
-  {
-    "title": "BuzzFeed News Trained A Computer To Search For Hidden Spy Planes. This Is What We Found.",
-    "author": "BuzzFeed News",
-    "link": "https://www.buzzfeed.com/peteraldhous/hidden-spy-planes"
-  },
-  {
-    "title": "What Recovery? The Case for Continued Expansionary Policy at the Fed",
-    "author": "Roosevelt Institute",
-    "link": "https://www.scribd.com/document/353402063/What-Recovery-The-Case-for-Continued-Expansionary-Policy-at-the-Fed#fullscreen&from_embed"
-  },
-  {
-    "title": "How I built a wind map with WebGL",
-    "author": "Vladimir Agafonkin",
-    "link": "https://blog.mapbox.com/how-i-built-a-wind-map-with-webgl-b63022b5537f"
-  }
-];
 
 const style = {
   section: {
