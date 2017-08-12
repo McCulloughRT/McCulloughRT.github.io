@@ -3,7 +3,7 @@ const CATEGORY = {
   MAPS: 'Maps',
   MR: 'AR/VR',
   ML: 'AI',
-  ALL: 'All'
+  ALL: 'FAVES'
 };
 
 export default CATEGORY;

@@ -73,7 +73,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/timberlandExt_c.jpg",
     "link": "",
     "active": true,
-    "top": true,
+    "top": false,
     "images": [{"src":"http://mcculloughrt.github.io/home/images/full/timberland/timberlandExt.jpg"},{"src":"http://mcculloughrt.github.io/home/images/full/timberland/timberlandInt1.jpg"},{"src":"http://mcculloughrt.github.io/home/images/full/timberland/timberlandInt2.jpg"}],
     "category": "Arch"
   },
