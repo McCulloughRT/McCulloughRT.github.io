@@ -8,6 +8,7 @@
     "imageUrl": "https://raw.githubusercontent.com/McCulloughRT/McCulloughRT.github.io/master/home/images/crop/wizerMov_c.png",
     "link": "",
     "active": true,
+    "top": true,
     "images": [{"src":"https://raw.githubusercontent.com/McCulloughRT/McCulloughRT.github.io/master/home/images/crop/wizerMov_c.png"}],
     "category": "AR/VR"
   },
@@ -20,6 +21,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/designRev_c.png",
     "link": "https://vimeo.com/229307274",
     "active": true,
+    "top": true,
     "images": [{"src":""}],
     "category": "AR/VR"
   },
@@ -32,6 +34,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/massModel_c.png",
     "link": "https://vimeo.com/229307293",
     "active": true,
+    "top": false,
     "images": [{"src":""}],
     "category": "AR/VR"
   },
@@ -44,6 +47,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/img/pdx_v.png",
     "link": "",
     "active": false,
+    "top": false,
     "images": [{"src":"http://mcculloughrt.github.io/home/img/transZoom_c.png"},{"src":"http://mcculloughrt.github.io/home/img/pdx_v.png"}],
     "category": "Maps"
   },
@@ -56,6 +60,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/wzrRender1_c.jpg",
     "link": "",
     "active": true,
+    "top": true,
     "images": [{"src":"http://mcculloughrt.github.io/home/images/full/wizer/wzrRender1.jpg"},{"src":"http://mcculloughrt.github.io/home/images/full/wizer/wzrRender2.jpg"},{"src":"http://mcculloughrt.github.io/home/images/full/wizer/wzrConst1.jpg"},{"src":"http://mcculloughrt.github.io/home/images/full/wizer/wzrConst2.jpg"},{"src":"http://mcculloughrt.github.io/home/images/full/wizer/wzrConst3.jpg"}],
     "category": "Arch"
   },
@@ -68,6 +73,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/timberlandExt_c.jpg",
     "link": "",
     "active": true,
+    "top": true,
     "images": [{"src":"http://mcculloughrt.github.io/home/images/full/timberland/timberlandExt.jpg"},{"src":"http://mcculloughrt.github.io/home/images/full/timberland/timberlandInt1.jpg"},{"src":"http://mcculloughrt.github.io/home/images/full/timberland/timberlandInt2.jpg"}],
     "category": "Arch"
   },
@@ -80,6 +86,7 @@
     "imageUrl": "",
     "link": "",
     "active": false,
+    "top": false,
     "images": [{"src":""}],
     "category": "AI"
   },
@@ -92,6 +99,7 @@
     "imageUrl": "",
     "link": "",
     "active": false,
+    "top": false,
     "images": [{"src":""}],
     "category": "AI"
   },
@@ -104,6 +112,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/regress_c.png",
     "link": "https://github.com/McCulloughRT/regress-js",
     "active": true,
+    "top": false,
     "images": [{"src":"http://mcculloughrt.github.io/home/images/crop/regress_c.png"}],
     "category": "AI"
   },
@@ -116,6 +125,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/kmeans_c.png",
     "link": "https://github.com/McCulloughRT/kmeans-js",
     "active": true,
+    "top": true,
     "images": [{"src":"http://mcculloughrt.github.io/home/images/crop/kmeans_c.png"}],
     "category": "AI"
   },
@@ -128,6 +138,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/demo_c.png",
     "link": "",
     "active": true,
+    "top": true,
     "images": [{"src":"http://mcculloughrt.github.io/home/images/full/demographics/demo.png"},{"src":"http://mcculloughrt.github.io/home/images/full/demographics/demoPoints.png"}],
     "category": "Maps"
   },
@@ -140,6 +151,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/transZoom_c.png",
     "link": "",
     "active": true,
+    "top": false,
     "images": [{"src":"http://mcculloughrt.github.io/home/images/full/transFreq/transFull.png"},{"src":"http://mcculloughrt.github.io/home/images/full/transFreq/transZoom.PNG"}],
     "category": "Maps"
   },
@@ -152,6 +164,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/transit_c.png",
     "link": "http://mcculloughrt.github.io/density",
     "active": true,
+    "top": false,
     "images": [{"src":""}],
     "category": "Maps"
   },
@@ -164,6 +177,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/buildings_c.png",
     "link": "http://mcculloughrt.github.io/buildings",
     "active": true,
+    "top": true,
     "images": [{"src":""}],
     "category": "Maps"
   },
@@ -176,6 +190,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/development_c.png",
     "link": "http://mcculloughrt.github.io/development",
     "active": true,
+    "top": true,
     "images": [{"src":""}],
     "category": "Maps"
   },
@@ -188,6 +203,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/population_c.png",
     "link": "http://mcculloughrt.github.io/population/",
     "active": true,
+    "top": true,
     "images": [{"src":""}],
     "category": "Maps"
   },
@@ -200,6 +216,7 @@
     "imageUrl": "http://mcculloughrt.github.io/home/images/crop/tweets_c.png",
     "link": "http://mcculloughrt.github.io",
     "active": true,
+    "top": false,
     "images": [{"src":""}],
     "category": "Maps"
   }

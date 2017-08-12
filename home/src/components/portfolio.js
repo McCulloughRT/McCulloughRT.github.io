@@ -75,7 +75,7 @@ export default class Portfolio extends Component {
     let filteredItems;
 
     if(category === CATEGORY.ALL) {
-      filteredItems = items.filter(item => item.active === true);
+      filteredItems = items.filter(item => item.active === true && item.top === true);
     } else {
       filteredItems = items.filter(item => item.category === category && item.active === true);
     }
