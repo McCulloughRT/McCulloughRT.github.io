@@ -1,5 +1,5 @@
 {
-  "name": "zoningmap",
+  "name": "HomePage",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.js",
@@ -29,6 +29,6 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   },
-  "author": "",
+  "author": "Ryan McCullough",
   "license": "ISC"
 }
