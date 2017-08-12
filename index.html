@@ -1,188 +1,100 @@
-
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-      <title>Ryan McCullough</title>
-
-      <meta charset="utf-8" />
-      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-      <link href='https://fonts.googleapis.com/css?family=Merriweather:300italic,300,700,900' rel='stylesheet' type='text/css'>
-      <link href='https://fonts.googleapis.com/css?family=Josefin+Slab:300,400,700' rel='stylesheet' type='text/css'>
-
-      <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
-
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-      <style type="text/css">
-        #content, #motto {
-          font-family: 'Merriweather', serif;
-          font-weight: 300;
-          font-size: 18px;
-          line-height: 1.5;
-          letter-spacing: -0.004em;
-          color: rgba(0,0,0,0.8);
-          margin-left: auto;
-          margin-right: auto;
-          text-align: left;
-          width: 85%;
-        }
-        .description{
-          font-family: 'Merriweather', serif;
-          font-weight: 300;
-          font-size: 12px;
-          line-height: 1.5;
-          letter-spacing: -0.004em;
-          color: rgba(0,0,0,0.8);
-        }
-        .jumbotron{
-          color: white;
-          text-shadow: #444 0 1px 1px;
-          background:transparent;
-          height: 550px;
-
-          font-family: 'Josefin Slab', serif;
-          font-weight: 700;
-          color: #ffffff;
-          text-align: center;
-        }
-        .bg{
-          background: url("home/img/blur15.jpg") no-repeat center center;
-          position:fixed;
-          width: 100%;
-          top: 0;
-          left: 0;
-          z-index: -1;
-        }
-    		hr.style-two {
-  		    border: 0;
-  		    height: 1px;
-  		    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-          width: 100%;
-    		}
-        .thumbnail{
-          height: 480px;
-        }
-        .buttons{
-          position: absolute;
-          bottom: 0px;
-          margin-bottom: 35px;
-          margin-left: 10px;
-        }
-
-      </style>
-  </head>
-
-  <body>
-    <div class="bg" style="height: 550px;"></div>
-    <div class="jumbotron">
-      <div class="container" style="margin-top: 150px;">
-        <p style="font-size: 6em; margin-bottom: 0px">
-          <b>Coding Architecture</b>
-        </p>
-        <p style="font-size: 2em; font-weight: 300; margin-bottom: 2px;">
-          <b>Projects by Ryan McCullough</b>
-        </p>
-        <p style="font-size: 1.25em; font-weight: 300;">
-          <a target="_blank" href="http://www.mcculloughrt.com" style="color:#BBBBBB;"><b>Architectural Work</b></a>
-        </p>
-      </div>
-    </div>
-
-    <hr class="style-two" style="margin-top: 50px;">
-    <div id="motto" style="width: 72%;">
-      <p style="font-size: 1.75em; text-align: justify;">Inspiration doesn't respect diciplines. The era
-        has arrived when "how it looks" and "how it works"
-        and "how it's made" all become one. Design, code, function... There is no difference.</p>
-      <p><a target="_blank" href="http://www.runemadsen.com/blog/on-meta-design-and-algorithmic-design-systems/?utm_source=Mode+News&utm_campaign=3dffe3da25-20150525+i%2Fo+-+01&utm_medium=email&utm_term=0_491926ce63-3dffe3da25-77695733&mc_cid=3dffe3da25&mc_eid=4d51a20d90">Philosophy... (wonderfully explained by Rune Madsen)</a></p>
-    </div>
-    <hr class="style-two"><br><br>
-
-    <div id="content">
-      <div class="row">
-        <p>Web projects using javascript, d3.js, WebGL, WebVR and more:</p>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail"><br>
-            <img src="home\img\devMap150.png">
-            <div class="caption">
-              <h3>GeoSpatial Analysis</h3>
-              <p class="description">Heatmapping development density with MapBox.js. <br><br>This project scrapes data about architecture projects in the City of Portland's development pipeline, converts them to GeoJSON, and plots them on a map with a heat overlay to show where patterns emerge. Projects can be filtered by a variety of factors.</p>
-            </div>
-            <div class="buttons">
-              <a target="_blank" href="http://mcculloughrt.github.io/devmap/" class="btn btn-default" role="button">Project</a> <a target="_blank" href="https://github.com/McCulloughRT/McCulloughRT.github.io/tree/master/devmap" class="btn btn-default" role="button">GitHub</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail"><br>
-            <img src="home\img\warnings150.png">
-            <div class="caption">
-              <h3>Revit Warnings Project</h3>
-              <p class="description">Graphing the frequency of warnings in Autodesk Revit.<br><br> Understanding the magnitude of a problem is one of the first steps towards fixing it. Node.js is used server-side on AWS to parse warnings exports from Revit into a MongoDB database that track warning type and project phase. The site is served by express, and graphs are created with d3.js. There are currently over 20,000 warning entries from 5 different countries.</p>
-            </div>
-            <div class="buttons"><a target="_blank" href="http://www.revitwarnings.org" class="btn btn-default" role="button">Project</a> <a target="_blank" href="https://github.com/McCulloughRT/RevitWarningsProject" class="btn btn-default" role="button">GitHub</a></div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail"><br>
-            <img src="home\img\revit150.png">
-            <div class="caption">
-              <h3>Intuitive Design Control</h3>
-              <p class="description">A project that was created so that we can design intuitively with our own hands, instead of trying to understand how to make the software acheive what we desire. Using a Leap Motion Controller, bone movements in the viewers hands are monitored and translated to camera movements.<br><br> Actions such as pinching and grabbing allow the designer to have real physical interaction with their designs. Additionally, an experimental WebVR module is included that will pipe graphics directly to an Oculus Rift device.</p>
-            </div>
-            <div class="buttons"><a target="_blank" href="http://mcculloughrt.github.io/rvt3js/" class="btn btn-default" role="button">Project</a> <a target="_blank" href="https://github.com/McCulloughRT/McCulloughRT.github.io/tree/master/rvt3js" class="btn btn-default" role="button">GitHub</a></div>
-          </div>
-        </div>
-      </div> <!-- End Row 1--> <br>
-
-      <div class="row">
-        <p>Projects using dynamo, grasshopper, the Revit API, and C#:</p>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail"><br>
-            <img src="home\img\fabric150.png">
-            <div class="caption">
-              <h3>Algorithmic Design 1</h3>
-              <p class="description">Parametric design with Dynamo.<br><br> Visual programming is used to create a fabric like sculpture. Control modules are created to allow flexing of armature along the fabric, control falloff rates from flexed positions, and introduce random organic noise.</p>
-            </div>
-            <div class="buttons"><a target="_blank" href="https://www.behance.net/gallery/30359299/Algorithmic-Design-Fabric" class="btn btn-default" role="button">Project</a></div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail"><br>
-            <img src="home\img\abs150.jpg">
-            <div class="caption">
-              <h3>Algorithmic Design 2</h3>
-              <p class="description">Parametric design with Dynamo.<br><br> Visual programming is used to interpret two-dimensional abstract paintings into multi-million point three-dimensional models. All parts of the model are brought automatically into Autodesk Revit with position and construction data for simple fabrication.</p>
-            </div>
-            <div class="buttons"><a target="_blank" href="https://www.behance.net/gallery/30358493/Algorithmic-Design-Computational-Landscapes" class="btn btn-default" role="button">Project</a></div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail"><br>
-            <img src="home\img\printindex150.png">
-            <div class="caption">
-              <h3>Print From Index</h3>
-              <p class="description">Revit API in C#.<br><br>A plugin for Autodesk Revit that allows vastly faster printing by programatically creating print sets from Architectural Sheet Indexes.</p>
-            </div>
-            <div class="buttons"><a target="_blank" href="https://apps.autodesk.com/RVT/en/Detail/Index?id=appstore.exchange.autodesk.com%3Aprintindex_windows64%3Aen" class="btn btn-default" role="button">Project</a> <a target="_blank" href="https://github.com/McCulloughRT/PrintFromIndex" class="btn btn-default" role="button">GitHub</a></div>
-          </div>
-        </div>
-      </div> <!-- End Row 2--> <br>
-
-    </div>
-    <script>
-      var jumboHeight = $('.jumbotron').outerHeight();
-      function parallax(){
-        var scrolled = $(window).scrollTop();
-        $('.bg').css('height', (jumboHeight-(scrolled * 1.1)) + 'px');
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/ebe49fcfb6.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link href="css/creative.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,800" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+      .default-override {
+        color: #222;
+        background-color: #DDD;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      iframe {
+        overflow: hidden;
+      }
+      .btn {
+        box-shadow: 3px 3px 9px -2px rgba(0,0,0,0.28);
+      }
+    </style>
+    <style>
+      .Typist .Cursor {
+        display: inline-block;
+        font-weight: 100;
+      }
+      .Typist .Cursor--blinking {
+        opacity: 1;
+        animation: blink 1s linear infinite;
       }
 
-      $(window).scroll(function(e){
-        parallax();
-      });
-    </script>
+      @keyframes blink {
+        0% {
+          opacity: 1; }
+        50% {
+          opacity: 0; }
+        100% {
+          opacity: 1; } }
+      /*body {
+        font-family: 'Open Sans', sans-serif;
+      }*/
+    </style>
+    <style>
+      .col-xs-5ths,
+      .col-sm-5ths,
+      .col-md-5ths,
+      .col-lg-5ths {
+          position: relative;
+          min-height: 1px;
+          padding-right: 15px;
+          padding-left: 15px;
+      }
+
+      .col-xs-5ths {
+          width: 20%;
+          float: left;
+      }
+
+      @media (min-width: 768px) {
+          .col-sm-5ths {
+              width: 20%;
+              float: left;
+          }
+      }
+
+      @media (min-width: 992px) {
+          .col-md-5ths {
+              width: 20%;
+              float: left;
+          }
+      }
+
+      @media (min-width: 1200px) {
+          .col-lg-5ths {
+              width: 20%;
+              float: left;
+          }
+      }
+    </style>
+  </head>
+  <body id='page-top'>
+    <div id='main'></div>
+    <script src='bundle.js'></script>
   </body>
 </html>
