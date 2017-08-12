@@ -1,294 +1,294 @@
 [
   {
     "text": {
-      title: 'Design Process VR',
-      tags: 'AR/VR | Revit',
-      description: `
+      "title": "Design Process VR",
+      "tags": "AR/VR | Revit",
+      "description": "
         Utilizing the HTC Vive, and custom computers, "one-click" VR was utilized throught the architectural
         process for Block 137. This allowed for increased public buy-in via walkthroughs with the jurisdiction,
         faster and more confident owner decisions, quick confirmation of design decisions for the team, and helped
         increase understanding and confidence for the contractor.
-      `
+      "
     },
-    imageUrl: 'https://raw.githubusercontent.com/McCulloughRT/McCulloughRT.github.io/master/home/images/crop/wizerMov_c.png',
-    link: 'https://vimeo.com/229307274',
-    active: true,
-    images: [{src:''}],
-    category: 'AR/VR'
+    "imageUrl": "https://raw.githubusercontent.com/McCulloughRT/McCulloughRT.github.io/master/home/images/crop/wizerMov_c.png",
+    "link": "https://vimeo.com/229307274",
+    "active": true,
+    "images": [{src:""}],
+    "category": "AR/VR"
   },
   {
-    text: {
-      title: 'HoloLens Design Coordination',
-      tags: 'AR/VR | C# | Unity | Holograms',
-      description: `
+    "text": {
+      "title": "HoloLens Design Coordination",
+      "tags": "AR/VR | C# | Unity | Holograms",
+      "description": "
         The application ingests Revit models containing all disciplines (architectural, structural, mechanical, etc...)
         and displays them as a physical (holographic) model that many users can interact with and coordinate around. Voice
         commands control the visibility and overlay of component models, so that clash detection meetings can be held around
         a holographic model sitting at a conference table.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/designRev_c.png',
-    link: 'https://vimeo.com/229307274',
-    active: true,
-    images: [{src:''}],
-    category: 'AR/VR'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/designRev_c.png",
+    "link": "https://vimeo.com/229307274",
+    "active": true,
+    "images": [{src:""}],
+    "category": "AR/VR"
   },
   {
-    text: {
-      title: 'HoloLens Mass Modeling',
-      tags: 'AR/VR | C# | Unity | Holograms',
-      description: `
+    "text": {
+      "title": "HoloLens Mass Modeling",
+      "tags": "AR/VR | C# | Unity | Holograms",
+      "description": "
         This application allows multiple users to collaborate on simple mass modeling, on top of site plans,
         as if they were real physical models. It introduces an entirely new, collaborate design process
         that conveys spatial qualities like a physical model but allows the iteration speed and reusability
         of digital design.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/massModel_c.png',
-    link: 'https://vimeo.com/229307293',
-    active: true,
-    images: [{src:''}],
-    category: 'AR/VR'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/massModel_c.png",
+    "link": "https://vimeo.com/229307293",
+    "active": true,
+    "images": [{src:""}],
+    "category": "AR/VR"
   },
   {
-    text: {
-      title: 'PDX - Modeled',
-      tags: 'something something something',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    "text": {
+      "title": "PDX - Modeled",
+      "tags": "something something something",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/img/pdx_v.png',
-    link: '',
-    active: false,
-    images: [{src:'http://mcculloughrt.github.io/home/img/transZoom_c.png'},{src:'http://mcculloughrt.github.io/home/img/pdx_v.png'}],
-    category: 'Maps'
+    "imageUrl": "http://mcculloughrt.github.io/home/img/pdx_v.png",
+    "link": "",
+    "active": false,
+    "images": [{src:"http://mcculloughrt.github.io/home/img/transZoom_c.png"},{src:"http://mcculloughrt.github.io/home/img/pdx_v.png"}],
+    "category": "Maps"
   },
   {
-    text: {
-      title: 'Block 137 | The Windward',
-      tags: 'Architecture | CA | Design',
-      description: `
+    "text": {
+      "title": "Block 137 | The Windward",
+      "tags": "Architecture | CA | Design",
+      "description": "
         United by a beautifully landscaped promenade, The Windward is comprised of three
         buildings in distinct yet compatible architectural styles including Arts & Crafts,
         Oregon Rustic, and Tudor. At 464,000sf It includes 200 units of multi-family residential, 40,000+sf
         of office and retail, outdoor recreation space, and subgrade parking. Construction is 4
         levels of post-tensioned concrete and metal framing, over two levels of below grade concrete.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/wzrRender1_c.jpg',
-    link: '',
-    active: true,
-    images: [{src:'http://mcculloughrt.github.io/home/images/full/wizer/wzrRender1.jpg'},{src:'http://mcculloughrt.github.io/home/images/full/wizer/wzrRender2.jpg'},{src:'http://mcculloughrt.github.io/home/images/full/wizer/wzrConst1.jpg'},{src:'http://mcculloughrt.github.io/home/images/full/wizer/wzrConst2.jpg'},{src:'http://mcculloughrt.github.io/home/images/full/wizer/wzrConst3.jpg'}],
-    category: 'Arch'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/wzrRender1_c.jpg",
+    "link": "",
+    "active": true,
+    "images": [{src:"http://mcculloughrt.github.io/home/images/full/wizer/wzrRender1.jpg"},{src:"http://mcculloughrt.github.io/home/images/full/wizer/wzrRender2.jpg"},{src:"http://mcculloughrt.github.io/home/images/full/wizer/wzrConst1.jpg"},{src:"http://mcculloughrt.github.io/home/images/full/wizer/wzrConst2.jpg"},{src:"http://mcculloughrt.github.io/home/images/full/wizer/wzrConst3.jpg"}],
+    "category": "Arch"
   },
   {
-    text: {
-      title: 'The Ackerly at Timberland',
-      tags: 'Architecture | Design',
-      description: `
+    "text": {
+      "title": "The Ackerly at Timberland",
+      "tags": "Architecture | Design",
+      "description": "
         Inspired by modern prairie design, the U-shaped building offers sweeping views of the valley
         and blends into the existing environment. A southern-facing courtyard offers bountiful sunlight,
         and provides at-grade access from various points. These entries offer independent, assisted, and
         memory care residents the opportunity to enjoy a lush landscape in a secured area. Dining, activity
         spaces, a fitness center, and game room also offer opportunities for enjoyment and socializing.
         The building uses predominately wood-framing and some post-tensioned concrete.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/timberlandExt_c.jpg',
-    link: '',
-    active: true,
-    images: [{src:'http://mcculloughrt.github.io/home/images/full/timberland/timberlandExt.jpg'},{src:'http://mcculloughrt.github.io/home/images/full/timberland/timberlandInt1.jpg'},{src:'http://mcculloughrt.github.io/home/images/full/timberland/timberlandInt2.jpg'}],
-    category: 'Arch'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/timberlandExt_c.jpg",
+    "link": "",
+    "active": true,
+    "images": [{src:"http://mcculloughrt.github.io/home/images/full/timberland/timberlandExt.jpg"},{src:"http://mcculloughrt.github.io/home/images/full/timberland/timberlandInt1.jpg"},{src:"http://mcculloughrt.github.io/home/images/full/timberland/timberlandInt2.jpg"}],
+    "category": "Arch"
   },
   {
-    text: {
-      title: 'Image Classification',
-      tags: 'Machine Learning | MATLAB | Neural Nets',
-      description: `
+    "text": {
+      "title": "Image Classification",
+      "tags": "Machine Learning | MATLAB | Neural Nets",
+      "description": "
 
-      `
+      "
     },
-    imageUrl: '',
-    link: '',
-    active: false,
-    images: [{src:''}],
-    category: 'AI'
+    "imageUrl": "",
+    "link": "",
+    "active": false,
+    "images": [{src:""}],
+    "category": "AI"
   },
   {
-    text: {
-      title: 'Architectural Similarity',
-      tags: 'Machine Learning | Python | Neural Nets',
-      description: `
+    "text": {
+      "title": "Architectural Similarity",
+      "tags": "Machine Learning | Python | Neural Nets",
+      "description": "
 
-      `
+      "
     },
-    imageUrl: '',
-    link: '',
-    active: false,
-    images: [{src:''}],
-    category: 'AI'
+    "imageUrl": "",
+    "link": "",
+    "active": false,
+    "images": [{src:""}],
+    "category": "AI"
   },
   {
-    text: {
-      title: 'Regress-JS',
-      tags: 'Machine Learning | Javascript | OpenSource',
-      description: `
+    "text": {
+      "title": "Regress-JS",
+      "tags": "Machine Learning | Javascript | OpenSource",
+      "description": "
         An implementation of multivariate polynomial regression in JavaScript. It can be used
         directly in the browser to predict outputs from previously unseen continous inputs.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/regress_c.png',
-    link: 'https://github.com/McCulloughRT/regress-js',
-    active: true,
-    images: [{src:'http://mcculloughrt.github.io/home/images/crop/regress_c.png'}],
-    category: 'AI'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/regress_c.png",
+    "link": "https://github.com/McCulloughRT/regress-js",
+    "active": true,
+    "images": [{src:"http://mcculloughrt.github.io/home/images/crop/regress_c.png"}],
+    "category": "AI"
   },
   {
-    text: {
-      title: 'KMeans-JS',
-      tags: 'Machine Learning | Javascript | OpenSource',
-      description: `
+    "text": {
+      "title": "KMeans-JS",
+      "tags": "Machine Learning | Javascript | OpenSource",
+      "description": "
         An implementation of the KMeans++ clustering algorithm in JavaScript. It can be used
         directly in the browser to learn natural groupings of data, and assign new data points
         to pre-determined categories. This implementation uses multithreading and the MapReduce paradigm
         to parallelize the computation. The image shown uses the library to cluster areas of the city
         into similar categories based on 22 demographic factors.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/kmeans_c.png',
-    link: 'https://github.com/McCulloughRT/kmeans-js',
-    active: true,
-    images: [{src:'http://mcculloughrt.github.io/home/images/crop/kmeans_c.png'}],
-    category: 'AI'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/kmeans_c.png",
+    "link": "https://github.com/McCulloughRT/kmeans-js",
+    "active": true,
+    "images": [{src:"http://mcculloughrt.github.io/home/images/crop/kmeans_c.png"}],
+    "category": "AI"
   },
   {
-    text: {
-      title: 'Demographics',
-      tags: 'Mapping | Census | Data Visualization',
-      description: `
+    "text": {
+      "title": "Demographics",
+      "tags": "Mapping | Census | Data Visualization",
+      "description": "
         Knowing the demographic makeup of an area and considering the people who live there is just as important
         to design as knowing its physical characteristics. The US Census provides an enormous amount of demographic
         information down to a very fine level of geographic detail, however the interface for retrieving that
         information can often leave something to be desired. Using Python and SQL, millions of data points were collected
-        at the block-group and tract level across the entire country, producing an interactive map that displays demographics
+        at the block-group and tract level across the entire country, producing an inter"active" map that displays demographics
         of a site both absolute and relative to its county, and can visualize those in a number of ways.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/demo_c.png',
-    link: '',
-    active: true,
-    images: [{src:'http://mcculloughrt.github.io/home/images/full/demographics/demo.png'},{src:'http://mcculloughrt.github.io/home/images/full/demographics/demoPoints.png'}],
-    category: 'Maps'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/demo_c.png",
+    "link": "",
+    "active": true,
+    "images": [{src:"http://mcculloughrt.github.io/home/images/full/demographics/demo.png"},{src:"http://mcculloughrt.github.io/home/images/full/demographics/demoPoints.png"}],
+    "category": "Maps"
   },
   {
-    text: {
-      title: 'Transit Frequency',
-      tags: 'Python | Big Data | Transit',
-      description: `
+    "text": {
+      "title": "Transit Frequency",
+      "tags": "Python | Big Data | Transit",
+      "description": "
         Transit access to a new development is a key feature of its potential,
         and the frequency of stops is just as important as their distance. Using Python and MongoDB,
         the GPS locations of every TriMet bus and train was tracked at high resolution over a period
         of 24 hours. The resulting database indicates not only the location of transit options from a site,
         but also how often they are served, and what capacity they operate at. The image shown is a visualization
         of this database colored by temporal density.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/transZoom_c.png',
-    link: '',
-    active: true,
-    images: [{src:'http://mcculloughrt.github.io/home/images/full/transFreq/transFull.png'},{src:'http://mcculloughrt.github.io/home/images/full/transFreq/transZoom.PNG'}],
-    category: 'Maps'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/transZoom_c.png",
+    "link": "",
+    "active": true,
+    "images": [{src:"http://mcculloughrt.github.io/home/images/full/transFreq/transFull.png"},{src:"http://mcculloughrt.github.io/home/images/full/transFreq/transZoom.PNG"}],
+    "category": "Maps"
   },
   {
-    text: {
-      title: 'Transit Density',
-      tags: 'Mapping | Python | Transit',
-      description: `
+    "text": {
+      "title": "Transit Density",
+      "tags": "Mapping | Python | Transit",
+      "description": "
         Transit Oriented Districts have shown that locating high density housing near transit lines can
         be mutually beneficial to both. Since building new transit is a very high capital venture,
         maximizing the housing density near existing lines is crucial. GIS data of transit
         stop locations, along with US census estimates of housing units in city blocks, allowed us to calculate
         transit access per dwelling unit per acre, identifying sites with relatively high transit access
         but lower than average housing density.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/transit_c.png',
-    link: 'http://mcculloughrt.github.io/density',
-    active: true,
-    images: [{src:''}],
-    category: 'Maps'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/transit_c.png",
+    "link": "http://mcculloughrt.github.io/density",
+    "active": true,
+    "images": [{src:""}],
+    "category": "Maps"
   },
   {
-    text: {
-      title: 'Existing Building Data',
-      tags: 'Mapping | Vector Tiles | Buildings | Python',
-      description: `
+    "text": {
+      "title": "Existing Building Data",
+      "tags": "Mapping | Vector Tiles | Buildings | Python",
+      "description": "
         Using surveyors data of building footprints, combined with arial LiDAR scans,3d geometries were created that represent every building in the County.
         The data was then enhanced with information from the county assessor giving metadata to each building, such as
         use, size, number of residences, and more. Finally, the resulting database was cut into 3d vector tiles and served
         onto a web map by a custom tile server, allowing detailed information, visualization, and exportable
-        context models for any site.
-      `
+        con"text" models for any site.
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/buildings_c.png',
-    link: 'http://mcculloughrt.github.io/buildings',
-    active: true,
-    images: [{src:''}],
-    category: 'Maps'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/buildings_c.png",
+    "link": "http://mcculloughrt.github.io/buildings",
+    "active": true,
+    "images": [{src:""}],
+    "category": "Maps"
   },
   {
-    text: {
-      title: 'Development Pipeline',
-      tags: 'Mapping | Development | NodeJS',
-      description: `
+    "text": {
+      "title": "Development Pipeline",
+      "tags": "Mapping | Development | NodeJS",
+      "description": "
         If you want to get the full picture of development in Portland, counting the cranes is insufficient.
         There are many projects in various stages of the cities pipeline, going through design review, getting permits, that are invisible.
         Using geospatial programming in NodeJS, weekly development reports from the city are overlaid on a grid where cells can accumulate
         and lose projects over time. By slicing this grid along its time dimension we created a constantly updating animation of where
-        development is happening over time in Portland, and how that's changing.
-      `
+        development is happening over time in Portland, and how that"s changing.
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/development_c.png',
-    link: 'http://mcculloughrt.github.io/development',
-    active: true,
-    images: [{src:''}],
-    category: 'Maps'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/development_c.png",
+    "link": "http://mcculloughrt.github.io/development",
+    "active": true,
+    "images": [{src:""}],
+    "category": "Maps"
   },
   {
-    text: {
-      title: 'Renters/Owners',
-      tags: 'Python | Big Data | Vector Tiles | Mapping',
-      description: `
+    "text": {
+      "title": "Renters/Owners",
+      "tags": "Python | Big Data | Vector Tiles | Mapping",
+      "description": "
         Understanding the patterns and structure in rental vs owned housing is integral to understanding the potential of a market,
         and watching these patterns change over time can give insight on where they will go in the future. Using Python, Futhark, and high
         performance GPU computing, census population data was transformed to generate a single map point for every single person
         in the United States, accurate down to the block they live on. As the points were generated, they were categorized as renters or
         owners based on census proportions. The resulting map required custom vector tiles to display
         the sheer density of information, and is a fascinating look at the density and organization of our cities.
-      `
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/population_c.png',
-    link: 'http://mcculloughrt.github.io/population/',
-    active: true,
-    images: [{src:''}],
-    category: 'Maps'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/population_c.png",
+    "link": "http://mcculloughrt.github.io/population/",
+    "active": true,
+    "images": [{src:""}],
+    "category": "Maps"
   },
   {
-    text: {
-      title: 'Tweets Predicting Development',
-      tags: 'Mapping | Python | Unsupervised Learning',
-      description: `
+    "text": {
+      "title": "Tweets Predicting Development",
+      "tags": "Mapping | Python | Unsupervised Learning",
+      "description": "
         While working with a botique hospitality group looking for potential sites, a theory was proposed that clustered, positive social media
         activity in an area should be an indicator of the areas popularity, and potential for hotel development. To test the correlation, we recorded
         all tweets originating from the Portland area over a week long period (over 24,000 total). Using semantic analysis, the content was categorized as
         positive or negative sentiment, and bots were filtered out. The DBSCAN clustering algorithm  was then used to identify natural geographic groupings
         of tweets that could define an area. Finally, existing hotels were plotted, clustered, and then seperated into catchment areas with a voronoi fractal.
-        Clusters of positive tweets did in fact correlate spatially with high density catchment areas, encouraging further research into social media's predictive power.
-      `
+        Clusters of positive tweets did in fact correlate spatially with high density catchment areas, encouraging further research into social media"s predictive power.
+      "
     },
-    imageUrl: 'http://mcculloughrt.github.io/home/images/crop/tweets_c.png',
-    link: 'http://mcculloughrt.github.io',
-    active: true,
-    images: [{src:''}],
-    category: 'Maps'
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/tweets_c.png",
+    "link": "http://mcculloughrt.github.io",
+    "active": true,
+    "images": [{src:""}],
+    "category": "Maps"
   }
 ]
