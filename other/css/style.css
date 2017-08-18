@@ -1,0 +1,44 @@
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: rgba(255,255,255,.3); /* Otherwise white in Chrome */
+  height: 10px;
+  border-radius: 3px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 12px;
+  width: 14px;
+  border-radius: 3px;
+  background: rgba(220,220,220,1);
+  cursor: ew-resize;
+}
+
+.uNavIcon {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 11px;
+}
+#home {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#mainContainer::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+#mainContainer::-webkit-scrollbar-thumb {
+  background: rgba(110, 110, 110, 0.7);
+}
+
+#mainContainer::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.4);
+}
