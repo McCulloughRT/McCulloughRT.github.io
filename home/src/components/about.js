@@ -37,7 +37,7 @@ const style = {
   section: {
     position: 'relative',
     background: '#FFF',
-    padding: '70px',
+    // padding: '70px',
     fontFamily: 'Montserrat'
   },
   fa: {

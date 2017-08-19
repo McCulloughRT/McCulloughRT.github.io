@@ -40,7 +40,7 @@ export default class Me extends Component {
     const { books, articles } = this.props.text;
 
     return (
-      <section id='me' style={{ position: 'relative', background:'#F9F9F9', padding: '70px', fontFamily: 'Montserrat' }}>
+      <section id='me' style={{ position: 'relative', background:'#F9F9F9', fontFamily: 'Montserrat' }}>
         <div className='container'>
           <div className='row' style={ style.headRow }>
             <div className='col-lg-8 col-lg-offset-2 text-center'>
@@ -107,7 +107,7 @@ const style = {
   section: {
     position: 'relative',
     background: '#FFF',
-    padding: '70px',
+    // padding: '70px',
     fontFamily: 'Montserrat'
   },
   ul: {
