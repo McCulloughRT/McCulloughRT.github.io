@@ -131,6 +131,19 @@
   },
   {
     "text": {
+      "title": "Neural Nets from Scratch",
+      "tags": "Machine Learning | Python | Deep Learning",
+      "description": "This is a set of functions for building N-Layer neural nets in python using numpy. Compared to modern frameworks like Tensorflow, MXNet, etc... it is considerably slower and should not be used in a production application, however it can be useful for debuging deep learning architectures due to functions being evaluated imperatively instead of building a static (black-box) computation graph like Tensorflow.<br />I created this after completing the first deep learning course from deeplearning.ai, to verify I fully understood the concepts of creating neural nets completely from scratch."
+    },
+    "imageUrl": "http://mcculloughrt.github.io/home/images/crop/xentropy_loss.png",
+    "link": "https://github.com/McCulloughRT/scratch-neural-net",
+    "active": true,
+    "top": false,
+    "images": [{"src":"ttp://mcculloughrt.github.io/home/images/crop/xentropy_loss.png"}],
+    "category": "AI"
+  },
+  {
+    "text": {
       "title": "Demographics",
       "tags": "Mapping | Census | Data Visualization",
       "description": "Knowing the demographic makeup of an area and considering the people who live there is just as important to design as knowing its physical characteristics. The US Census provides an enormous amount of demographic information down to a very fine level of geographic detail, however the interface for retrieving that information can often leave something to be desired. Using Python and SQL, millions of data points were collected at the block-group and tract level across the entire country, producing an interactive map that displays demographics of a site both absolute and relative to its county, and can visualize those in a number of ways."
