@@ -58,15 +58,15 @@ export default class App extends Component {
     componentDidMount() {
       window.addEventListener('resize', this._updateDimensions);
       window.addEventListener('orientationchange', this._orientationChange);
-      requestJson('http://mcculloughrt.github.io/home/data/projects.json', (error, response) => {
+      requestJson('https://raw.githubusercontent.com/McCulloughRT/McCulloughRT.github.io/master/home/data/projects.json', (error, response) => {
         if(error) console.log(error);
         this.setState({ projects: response });
       });
-      requestJson('http://mcculloughrt.github.io/home/data/about.json', (error, response) => {
+      requestJson('https://raw.githubusercontent.com/McCulloughRT/McCulloughRT.github.io/master/home/data/about.json', (error, response) => {
         if(error) console.log(error);
         this.setState({ about: response });
       });
-      requestJson('http://mcculloughrt.github.io/home/data/me.json', (error, response) => {
+      requestJson('https://raw.githubusercontent.com/McCulloughRT/McCulloughRT.github.io/master/home/data/me.json', (error, response) => {
         if(error) console.log(error);
         this.setState({ me: response });
       });
