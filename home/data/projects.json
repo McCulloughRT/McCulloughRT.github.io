@@ -1,6 +1,19 @@
 [
   {
     "text": {
+      "title": "Training an Architectural Classifier",
+      "tags": "Machine Learning | Python | Neural Nets",
+      "description": "In this series of articles, I go through successively more complex machine learning models for image classification, eventually reaching 92% accuracy with a deep convolutional neural network."
+    },
+    "imageUrl": "https://github.com/McCulloughRT/McCulloughRT.github.io/raw/master/home/images/crop/place_c.png",
+    "link": "https://medium.com/@mcculloughrt/training-an-architectural-classifier-5f1b4f512368",
+    "active": true,
+    "top": true,
+    "images":[{"src":""}],
+    "category": "AI"
+  },
+  {
+    "text": {
       "title": "Design Process VR",
       "tags": "AR/VR | Revit",
       "description": "Utilizing the HTC Vive, and custom computers, one-click VR was utilized throught the architectural process for Block 137. This allowed for increased public buy-in via walkthroughs with the jurisdiction,faster and more confident owner decisions, quick confirmation of design decisions for the team, and helped increase understanding and confidence for the contractor."
