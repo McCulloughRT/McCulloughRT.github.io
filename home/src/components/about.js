@@ -55,7 +55,7 @@ const style = {
     color: '#2A3A3F'
   },
   headRow: {
-    marginBottom: '50px'
+    marginBottom: '20px'
   },
   title: {
     fontSize: '2em',

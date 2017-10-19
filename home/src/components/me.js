@@ -27,17 +27,17 @@ export default class Me extends Component {
     return articles.map((article,i) => {
       const key = 'article_' + i;
       return (
-        <li className='articleLi' style={{ fontWeight: '400', paddingBottom: '40px', fontStyle: 'italic' }} key={ key }>
+        <li className='articleLi' style={{ fontWeight: '400', paddingBottom: '20px', fontStyle: 'italic' }} key={ key }>
           <a href={ article.link } target='_blank' className='articleTitle' style={ style.bookTitle }>{ article.title }</a>
           <br />
-          <span className='articleAuthor' style={ style.author }>{ article.author }</span>
+          <span className='articleAuthor' style={ style.author }>{ article.author || "Ryan McCullough" }</span>
         </li>
       );
     });
   }
 
   render() {
-    const { books, articles } = this.props.text;
+    const { books, articles, writing } = this.props.text;
 
     return (
       <section id='me' style={{ position: 'relative', background:'#F9F9F9', fontFamily: 'Montserrat' }}>
@@ -53,7 +53,7 @@ export default class Me extends Component {
             </div>
           </div>
           <div className='row'>
-            <div className='col-md-4 text-center'>
+            <div className='col-md-3 text-center'>
               <i className="fa fa-newspaper-o" style={ style.fa }></i>
               <h4 style={ style.title }>Recent Links</h4>
               <div style={{ textAlign: 'left' }}>
@@ -62,7 +62,16 @@ export default class Me extends Component {
                 </ul>
               </div>
             </div>
-            <div className='col-md-4 text-center'>
+            <div className='col-md-3 text-center'>
+              <i className="fa fa-pencil" style={ style.fa }></i>
+              <h4 style={ style.title }>Writings</h4>
+              <div style={{ textAlign: 'left' }}>
+                <ul style={ style.ul }>
+                  { this.articleList(writing) }
+                </ul>
+              </div>
+            </div>
+            <div className='col-md-3 text-center'>
               <i className="fa fa-bookmark-o" style={ style.fa }></i>
               <h4 style={ style.title }>Currently Reading</h4>
               <div style={{ textAlign: 'left' }}>
@@ -71,7 +80,7 @@ export default class Me extends Component {
                 </ul>
               </div>
             </div>
-            <div className='col-md-4 text-center'>
+            <div className='col-md-3 text-center'>
               <i className="fa fa-address-card-o" style={ style.fa }></i>
               <h4 style={ style.title }>Contact</h4>
               { socialLinks() }
@@ -123,14 +132,14 @@ const style = {
     color: 'rgb(45,120,140)'
   },
   author: {
-    fontSize: '1.25em',
+    fontSize: '1em',
     fontWeight: '300'
   },
   by: {
     fontSize: '0.98em'
   },
   fa: {
-    fontSize: '4em',
+    fontSize: '3em',
     color: '#45BEAA'
   },
   heading: {
@@ -147,7 +156,7 @@ const style = {
     marginBottom: '50px'
   },
   title: {
-    fontSize: '2em',
+    fontSize: '1.5em',
     fontWeight: '700',
     color: '#2A3A3F',
     marginTop: '25px',
