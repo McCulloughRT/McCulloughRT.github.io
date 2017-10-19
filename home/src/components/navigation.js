@@ -20,7 +20,7 @@ export default function Navigation(props) {
         <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
           <ul className='nav navbar-nav navbar-right'>
             <li><a className='page-scroll' style={{ color: txColor, cursor: 'pointer' }} onClick={ () => TweenLite.to(window, .8, {scrollTo: '#work-wrapper'})}>Work</a></li>
-            <li><a className='page-scroll' style={{ color: txColor, cursor: 'pointer' }} onClick={ () => TweenLite.to(window, .8, {scrollTo: '#me'})}>Contact</a></li>
+            <li><a className='page-scroll' style={{ color: txColor, cursor: 'pointer' }} onClick={ () => TweenLite.to(window, .8, {scrollTo: '#me'})}>About</a></li>
           </ul>
         </div>
       </div>
