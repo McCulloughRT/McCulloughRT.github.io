@@ -56,7 +56,7 @@ export default class Me extends Component {
             <div className='col-md-3 text-center'>
               <i className="fa fa-newspaper-o" style={ style.fa }></i>
               <h4 style={ style.title }>Recent Links</h4>
-              <div style={{ textAlign: 'left' }}>
+              <div style={ style.listBox }>
                 <ul style={ style.ul }>
                   { this.articleList(articles) }
                 </ul>
@@ -65,7 +65,7 @@ export default class Me extends Component {
             <div className='col-md-3 text-center'>
               <i className="fa fa-pencil" style={ style.fa }></i>
               <h4 style={ style.title }>Writings</h4>
-              <div style={{ textAlign: 'left' }}>
+              <div style={ style.listBox }>
                 <ul style={ style.ul }>
                   { this.articleList(writing) }
                 </ul>
@@ -74,7 +74,7 @@ export default class Me extends Component {
             <div className='col-md-3 text-center'>
               <i className="fa fa-bookmark-o" style={ style.fa }></i>
               <h4 style={ style.title }>Currently Reading</h4>
-              <div style={{ textAlign: 'left' }}>
+              <div style={ style.listBox }>
                 <ul style={ style.ul }>
                   { this.bookList(books) }
                 </ul>
@@ -113,6 +113,11 @@ function socialLinks() {
 }
 
 const style = {
+  listBox: {
+    textAlign: 'left',
+    maxHeight: '300px',
+    overflow: 'scroll'
+  },
   section: {
     position: 'relative',
     background: '#FFF',
