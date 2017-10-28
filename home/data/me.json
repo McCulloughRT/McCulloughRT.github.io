@@ -2,19 +2,23 @@
   "writing": [
     {
       "title": "Training an Architectural Classifier (5 part series)",
-      "link": "https://medium.com/@mcculloughrt/training-an-architectural-classifier-5f1b4f512368"
+      "link": "https://medium.com/@mcculloughrt/training-an-architectural-classifier-5f1b4f512368",
+      "author": "on: Hackernoon"
     },
     {
       "title": "React/Redux with Mapbox",
-      "link": "https://medium.com/@mcculloughrt/react-redux-with-mapbox-78fa3767211e"
+      "link": "https://medium.com/@mcculloughrt/react-redux-with-mapbox-78fa3767211e",
+      "author": "on: Hackernoon"
     },
     {
       "title": "Sketch Modeling with HoloLens",
-      "link": "https://medium.com/@mcculloughrt/sketch-modeling-with-hololens-b12e8e411b85"
+      "link": "https://medium.com/@mcculloughrt/sketch-modeling-with-hololens-b12e8e411b85",
+      "author": "on: Hackernoon"
     },
     {
       "title": "Neural Style Transfer of Satellite Imagery",
-      "link": "https://medium.com/@mcculloughrt/neural-style-transfer-on-satellite-imagery-cbc6c207c949"
+      "link": "https://medium.com/@mcculloughrt/neural-style-transfer-on-satellite-imagery-cbc6c207c949",
+      "author": "on: Breathe Publication"
     }
   ],
   "books": [
