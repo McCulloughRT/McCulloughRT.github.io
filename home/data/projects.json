@@ -92,6 +92,19 @@
   },
   {
     "text": {
+      "title": "Algorithmic Design",
+      "tags": "Dynamo | Python | Revit | Art",
+      "description": "Building computational geometry with the Dynamo parametric design environment for Revit. This project creates buildable landscape objects from two dimensional imagery."
+    },
+    "imageUrl": "https://raw.githubusercontent.com/McCulloughRT/McCulloughRT.github.io/master/home/images/crop/compscape_c.png",
+    "link": "https://www.behance.net/gallery/30358493/Algorithmic-Design-Computational-Landscapes",
+    "active": true,
+    "top": true,
+    "images": [{"src":""}],
+    "category": "Arch"
+  },
+  {
+    "text": {
       "title": "Image Classification",
       "tags": "Machine Learning | MATLAB | Neural Nets",
       "description": ""
