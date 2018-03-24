@@ -142,7 +142,7 @@ export default class Portfolio extends Component {
             <div className='row'>
               {/* header here */}
               <div className='col-lg-8 col-lg-offset-2 text-center'>
-                <p style={ style.heading }>My Work</p>
+                <p style={ style.heading }>Recent Work</p>
                 <p style={ style.subHeading}>Select a category to view</p>
               </div>
             </div>

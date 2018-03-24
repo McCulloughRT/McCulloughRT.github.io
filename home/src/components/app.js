@@ -7,6 +7,7 @@ import HeroHeader from './hero_header';
 import About from './about';
 import Portfolio from './Portfolio';
 import Me from './me';
+import Newsletter from './newsletter';
 
 export default class App extends Component {
     constructor(props) {
@@ -85,7 +86,7 @@ export default class App extends Component {
             <Navigation waypointPassed={ waypointPassed } />
             <HeroHeader height={ windowHeight } width={ windowWidth }/>
             <Waypoint onLeave={ this._onLeaveHandler } onEnter={ this._onEnterHandler}/>
-            <About text={ about }/>
+            <Newsletter text={ about }/>
             <Portfolio width={ windowWidth } items={ projects }/>
             <Me text={ me }/>
           </div>

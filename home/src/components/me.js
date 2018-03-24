@@ -115,8 +115,9 @@ function socialLinks() {
 const style = {
   listBox: {
     textAlign: 'left',
-    maxHeight: '300px',
-    overflow: 'scroll'
+    maxHeight: '400px',
+    overflowY: 'hidden',
+    overflowX: 'hidden'
   },
   section: {
     position: 'relative',

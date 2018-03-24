@@ -64,7 +64,7 @@ export default class HeroHeader extends Component {
                 }
               </div>
 
-              <div className='btn btn-primary btn-xl page-scroll' onClick={ () => TweenLite.to(window, .8, {scrollTo: '#about'})} style={{ marginTop: '50px' }}>Browse Projects</div>
+              <div className='btn btn-primary btn-xl page-scroll' onClick={ () => TweenLite.to(window, .8, {scrollTo: '#work-wrapper'})} style={{ marginTop: '50px' }}>Browse Projects</div>
             </div>
           </div>
         </header>
