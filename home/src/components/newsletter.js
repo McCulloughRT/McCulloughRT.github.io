@@ -13,7 +13,7 @@ export default function About(props) {
         </div>
         <div className='col-md-12 text-center' id='subscribeBtn'>
           <a href='http://eepurl.com/do4KDf' target='_blank' className='btn btn-default default-override' style={{ ...style.subscribe, marginRight: '20px' }}>Subscribe</a>
-          <a href='http://eepurl.com/do4KDf' target='_blank' className='btn btn-default default-override' style={{ ...style.subscribe, marginLeft: '20px' }}>Archive</a>
+          <a href='https://us17.campaign-archive.com/home/?u=e5cfc6c4abd932f2ccb1ceec4&id=c252272ed8' target='_blank' className='btn btn-default default-override' style={{ ...style.subscribe, marginLeft: '20px' }}>Archive</a>
         </div>
         {/* <div className='row'>
           <div className='col-md-4 text-center'>
