@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Swipe between maps</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+body {
+    overflow: hidden;
+}
+
+body * {
+   -webkit-touch-callout: none;
+     -webkit-user-select: none;
+        -moz-user-select: none;
+         -ms-user-select: none;
+             user-select: none;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+.legend {
+    font-size: 0.8em;
+    position: absolute;
+    bottom: 30px;
+    width: 150px;
+    height: 110px;
+    background: rgba(80,80,80,.90);
+    z-index: 2;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+.left {
+    left: 10px;
+}
+.right {
+    right: 10px;
+}
+.item {
+    width: 100%;
+    position: relative;
+    height: 30px;
+    text-align: left;
+
+}
+.color {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.label {
+    float: left;
+    margin-top: 10px;
+    text-align: left;
+    padding-left: 20px;
+}
+#ageOld {
+    background: hsl(0, 0%, 100%);
+}
+#ageNew {
+    background: hsl(226, 100%, 50%);
+}
+#rent {
+    background: hsl(303, 100%, 40%);
+}
+#own {
+    background: hsl(185, 100%, 45%);
+}
+.legendLabel {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+</style>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
+<div class='legend left'>
+    <div class='legendLabel'>Built Environtment</div>
+    <div class='item'>
+        <div class='color' id='ageOld'></div>
+        <div class='label'>Older (&lt1900)</div>
+    </div>
+    <div class='item'>
+        <div class='color' id='ageNew'></div>
+        <div class='label'>Newer (&gt2015)</div>
+    </div>
+</div>
+
+<div class='legend right'>
+    <div class='legendLabel'>Demographics</div>
+    <div class='item'>
+        <div class='color' id='rent'></div>
+        <div class='label'>Person (renter)</div>
+    </div>
+    <div class='item'>
+        <div class='color' id='own'></div>
+        <div class='label'>Person (owner)</div>
+    </div>
+</div>
+
+<div id='before' class='map'></div>
+<div id='after' class='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ.AamjhGik8yPxK5V71kzHdw';
+var beforeMap = new mapboxgl.Map({
+    container: 'before',
+    style: 'mapbox://styles/ryantm/cj8m5f0136ll12sk7nm8dj00k',
+    center: [-122.674378, 45.521980],
+    zoom: 15.40
+});
+
+var afterMap = new mapboxgl.Map({
+    container: 'after',
+    style: 'mapbox://styles/ryantm/cjhr3k8gm1imc2snwg1tro0k0',
+    center: [-122.674378, 45.521980],
+    zoom: 15.40
+});
+
+var map = new mapboxgl.Compare(beforeMap, afterMap, {
+    // Set this to enable comparing two maps by mouse movement:
+    // mousemove: true
+});
+</script>
+
+</body>
+</html>
