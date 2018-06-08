@@ -1,0 +1,31 @@
+{
+  "name": "eto",
+  "version": "1.0.0",
+  "description": "Creating a React/Redux wrapper around Mapbox",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress --hot --port 3030 --mode=development",
+    "build": "webpack --optimize-minimize --define process.env.NODE_ENV='production'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "debounce": "^1.1.0",
+    "immutable": "^3.8.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "json-loader": "^0.5.7",
+    "webpack": "^4.11.1",
+    "webpack-cli": "^3.0.3",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
