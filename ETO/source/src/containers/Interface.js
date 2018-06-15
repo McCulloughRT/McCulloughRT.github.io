@@ -55,10 +55,8 @@ class Interface extends Component {
 
     return (
       <div id='ui' style={ style.ui }>
-        <div style={ style.header }>Adjust Assumptions:</div>
-        <div style={ style.zoneContainer } id='zone_presets'>
-          { chkboxes }
-        </div>
+        <div style={ style.header }>Adjust Power Assumptions:<div style={ style.reminder }>Only net-zero or positive lots will be shown.</div></div>
+
         <div>
           <div style={ style.sliderContainer}>
             <div>PV Coverage of Lot Area: { this.state.solarCoverage } %</div>
@@ -72,6 +70,11 @@ class Interface extends Component {
             <div>Anticipated EUI: { this.state.eui } kBTU/sf/yr</div>
             <input type="range" min='1' max='100' value={ this.state.eui } step='1' className="form-control-range" id="eui" onChange={ (e) => this.handleChange(e, 'eui') } />
           </div>
+          <br /><hr />
+          <div style={ style.header }>Adjust Policy Assumptions:<div style={ style.reminder }>Only lots matching these filters will be shown.</div></div>
+          <div style={ style.zoneContainer } id='zone_presets'>
+            { chkboxes }
+          </div>
           <div style={ style.sliderContainer}>
             <div>Minimum Amount of Rent Burden: { this.state.minRentBurden } %</div>
             <input type="range" min='0' max='100' value={ this.state.minRentBurden } step='5' className="form-control-range" id="minRentBurden" onChange={ (e) => this.handleChange(e, 'minRentBurden') } />
@@ -81,11 +84,10 @@ class Interface extends Component {
         <div className='container' style={ style.legendBox }>
           <div style={ style.legendGradient }></div>
           <div className='row'>
-            <div id='leftTxt' className='col-md-6' style={{ text: 'align-left'}}>Low</div>
-            <div id='rightTxt' className='col-md-6' style={{ text: 'align-right'}}>High</div>
+            <div id='leftTxt' className='col-md-6' style={{ textAlign: 'left'}}>25% Rent Burden</div>
+            <div id='rightTxt' className='col-md-6' style={{ textAlign: 'right'}}>40% Rent Burden</div>
           </div>
         </div>
-        <div style={ style.reminder }>Click on a building for more information!</div>
       </div>
     );
   }
@@ -128,7 +130,8 @@ const style = {
     right: '20px',
     borderRadius: '7px',
     width: '350px',
-    background: 'white',
+    background: 'rgba(50,50,50,0.8)',
+    color: 'white',
     padding: '15px'
   },
   legendBox: {
@@ -145,7 +148,8 @@ const style = {
   legendGradient: {
     height: '10px',
     width: '100%',
-    background: 'linear-gradient(to right, #f7fbff, #084594)',
+    // background: 'linear-gradient(to right, #f7fbff, #084594)',
+    background: 'linear-gradient(to right, rgba(128,255,0,0.25), rgba(255,128,0,0.45), rgba(255,0,0,0.45))',
     borderRadius: '10px',
     marginBottom: '5px'
   },
@@ -156,6 +160,7 @@ const style = {
   reminder: {
     fontSize: 'x-small',
     marginTop: '10px',
-    marginLeft: '10px'
+    marginLeft: '0px',
+    fontWeight: '100'
   }
 };

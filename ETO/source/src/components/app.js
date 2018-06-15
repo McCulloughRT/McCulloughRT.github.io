@@ -7,7 +7,7 @@ const TOKEN = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ
 // const LONG = -122.66661759147235;
 // const LAT = 45.51886025215052;
 // const ZOOM = 14.26;
-const STYLE_ID = 'ryantm/cji3r9brz1v0c2sq2zsyvgfzk';
+const STYLE_ID = 'ryantm/cjig5j3r83p372so7maj4wgge';
 
 export default class App extends Component {
 

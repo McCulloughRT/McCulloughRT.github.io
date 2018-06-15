@@ -25697,7 +25697,7 @@ var TOKEN = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ.A
 // const LONG = -122.66661759147235;
 // const LAT = 45.51886025215052;
 // const ZOOM = 14.26;
-var STYLE_ID = 'ryantm/cji3r9brz1v0c2sq2zsyvgfzk';
+var STYLE_ID = 'ryantm/cjig5j3r83p372so7maj4wgge';
 
 var App = function (_Component) {
   _inherits(App, _Component);
@@ -25849,12 +25849,12 @@ var Interface = function (_Component) {
         _react2.default.createElement(
           'div',
           { style: style.header },
-          'Adjust Assumptions:'
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: style.zoneContainer, id: 'zone_presets' },
-          chkboxes
+          'Adjust Power Assumptions:',
+          _react2.default.createElement(
+            'div',
+            { style: style.reminder },
+            'Only net-zero or positive lots will be shown.'
+          )
         ),
         _react2.default.createElement(
           'div',
@@ -25901,6 +25901,23 @@ var Interface = function (_Component) {
                 return _this3.handleChange(e, 'eui');
               } })
           ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('hr', null),
+          _react2.default.createElement(
+            'div',
+            { style: style.header },
+            'Adjust Policy Assumptions:',
+            _react2.default.createElement(
+              'div',
+              { style: style.reminder },
+              'Only lots matching these filters will be shown.'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { style: style.zoneContainer, id: 'zone_presets' },
+            chkboxes
+          ),
           _react2.default.createElement(
             'div',
             { style: style.sliderContainer },
@@ -25925,20 +25942,15 @@ var Interface = function (_Component) {
             { className: 'row' },
             _react2.default.createElement(
               'div',
-              { id: 'leftTxt', className: 'col-md-6', style: { text: 'align-left' } },
-              'Low'
+              { id: 'leftTxt', className: 'col-md-6', style: { textAlign: 'left' } },
+              '25% Rent Burden'
             ),
             _react2.default.createElement(
               'div',
-              { id: 'rightTxt', className: 'col-md-6', style: { text: 'align-right' } },
-              'High'
+              { id: 'rightTxt', className: 'col-md-6', style: { textAlign: 'right' } },
+              '40% Rent Burden'
             )
           )
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: style.reminder },
-          'Click on a building for more information!'
         )
       );
     }
@@ -25985,7 +25997,8 @@ var style = {
     right: '20px',
     borderRadius: '7px',
     width: '350px',
-    background: 'white',
+    background: 'rgba(50,50,50,0.8)',
+    color: 'white',
     padding: '15px'
   },
   legendBox: {
@@ -26002,7 +26015,8 @@ var style = {
   legendGradient: {
     height: '10px',
     width: '100%',
-    background: 'linear-gradient(to right, #f7fbff, #084594)',
+    // background: 'linear-gradient(to right, #f7fbff, #084594)',
+    background: 'linear-gradient(to right, rgba(128,255,0,0.25), rgba(255,128,0,0.45), rgba(255,0,0,0.45))',
     borderRadius: '10px',
     marginBottom: '5px'
   },
@@ -26013,7 +26027,8 @@ var style = {
   reminder: {
     fontSize: 'x-small',
     marginTop: '10px',
-    marginLeft: '10px'
+    marginLeft: '0px',
+    fontWeight: '100'
   }
 };
 
@@ -26437,13 +26452,14 @@ function StylesheetReducer() {
         switch (type) {
           case 'solarCoverage':
             {
-              var newStyle = styleState.setIn(['layers', layerIdx, 'filter', 1, 1, 1, 1, 1, 2], parseFloat(val) / 100);
+              var newStyle = styleState.setIn(['layers', layerIdx, 'filter', 1, 1, 1, 2], parseFloat(val) / 100);
               return newStyle;
               break;
             }
           case 'solarEfficiency':
             {
-              var _newStyle = styleState.setIn(['layers', layerIdx, 'filter', 1, 1, 1, 1, 2], parseFloat(val));
+              var kWh_sf_yr = parseFloat(val) / 1000 * 1160;
+              var _newStyle = styleState.setIn(['layers', layerIdx, 'filter', 1, 1, 2, 2], kWh_sf_yr);
               return _newStyle;
               break;
             }
@@ -26497,12 +26513,25 @@ function StylesheetReducer() {
             _zones = _action$payload2.zones;
 
 
-        var filter = ['all', ['>', ['-', ['/', ['*', ['*', ['to-number', ['get', 'b']], solarCoverage / 100], solarEfficiency], 1000], // kW production
-        ['/', ['/', ['*', ['*', ['to-number', ['get', 'b']], ['to-number', ['coalesce', ['get', 'c'], 1]]], eui], 3.412142], 8760] // kW consumption
+        var _kWh_sf_yr = solarEfficiency / 1000 * 1160;
+        var filter = ['all', ['>', ['-', ['*', ['to-number', ['get', 'b']], solarCoverage / 100], // SF of possible PV
+        ['/', ['/', ['*', ['*', ['to-number', ['get', 'b']], ['to-number', ['coalesce', ['get', 'c'], 1]]], eui], 3.412142], _kWh_sf_yr] // SF of PV needed
         ], 0], ['>', ['to-number', ['get', 'a']], minRentBurden], true];
 
+        // const paint = {
+        //   'fill-color': ['rgb',
+        //     0,
+        //     ['*',['/',['to-number',['get','a']], 0.5], 255],
+        //     0,
+        //     ['*',['/',['to-number',['get','a']], 0.5], 255]
+        //   ]
+        // };
+        var paint = {
+          'fill-color': ['interpolate', ['linear'], ['to-number', ['get', 'a']], 15, 'rgba(0,255,0,0.05)', 20, 'rgba(128,255,0,0.25)', 25, 'rgba(191, 255, 0, 0.3)', 30, 'rgba(255,128,0,0.45)', 35, 'rgba(255,0,0,0.45)', 37, 'rgba(255,0,0,0.45)', 40, 'rgba(255,0,0,0.45)']
+        };
+
         var _newStyle5 = styleState.updateIn(['layers', _layerIdx], function (property) {
-          return property.set('filter', _immutable2.default.fromJS(filter));
+          return property.set('filter', _immutable2.default.fromJS(filter)).set('paint', _immutable2.default.fromJS(paint));
         });
 
         return _newStyle5;
@@ -26524,35 +26553,35 @@ function StylesheetReducer() {
         var _layerIdx2 = styleState.get('layers').findIndex(function (layer) {
           return layer.get('id') === _LAYER_ID2;
         });
-        var paint = {}; // <= not a constant, dont use elsewhere in this scope
+        var _paint = {}; // <= not a constant, dont use elsewhere in this scope
 
         switch (action.payload) {
           case 'age':
-            paint.property = 'YEAR_BUILT';
-            paint.type = 'exponential';
-            paint.stops = [[minAge, lightBlue], [maxAge, darkBlue]];
+            _paint.property = 'YEAR_BUILT';
+            _paint.type = 'exponential';
+            _paint.stops = [[minAge, lightBlue], [maxAge, darkBlue]];
             break;
           case 'sqft':
-            paint.property = 'BLDG_SQFT';
-            paint.type = 'exponential';
-            paint.stops = [[minSqft, lightBlue], [maxSqft, darkBlue]];
+            _paint.property = 'BLDG_SQFT';
+            _paint.type = 'exponential';
+            _paint.stops = [[minSqft, lightBlue], [maxSqft, darkBlue]];
             break;
           case 'units':
-            paint.property = 'UNITS_RES';
-            paint.type = 'exponential';
-            paint.stops = [[minUnits, lightBlue], [maxUnits, darkBlue]];
+            _paint.property = 'UNITS_RES';
+            _paint.type = 'exponential';
+            _paint.stops = [[minUnits, lightBlue], [maxUnits, darkBlue]];
             break;
           case 'use':
-            paint.property = 'BLDG_USE';
-            paint.type = 'categorical';
-            paint.stops = categoryStops;
+            _paint.property = 'BLDG_USE';
+            _paint.type = 'categorical';
+            _paint.stops = categoryStops;
             break;
           default:
-            paint = darkBlue;
+            _paint = darkBlue;
         }
 
         var _newStyle6 = styleState.updateIn(['layers', _layerIdx2, 'paint'], function (property) {
-          return property.set('fill-extrusion-color', paint);
+          return property.set('fill-extrusion-color', _paint);
         });
         return _newStyle6;
       }
