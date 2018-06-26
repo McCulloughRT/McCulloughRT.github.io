@@ -67,19 +67,11 @@ export default function StylesheetReducer(styleState = null, action) {
           [
             '-',
             ['*',['to-number',['get','b']], (solarCoverage / 100)], // SF of possible PV
-            ['/', ['/', ['*', ['*', ['to-number', ['get','b']], ['to-number', ['coalesce',['get','c'],1]]], eui], 3.412142], kWh_sf_yr] // SF of PV needed
+            ['/', ['/', ['*', ['*', ['to-number', ['get','b']], ['max', 1, ['to-number', ['coalesce',['get','c'],1]]]], eui], 3.412142], kWh_sf_yr] // SF of PV needed
           ],
           0
       ], ['>', ['to-number',['get','a']], minRentBurden], true];
 
-      // const paint = {
-      //   'fill-color': ['rgb',
-      //     0,
-      //     ['*',['/',['to-number',['get','a']], 0.5], 255],
-      //     0,
-      //     ['*',['/',['to-number',['get','a']], 0.5], 255]
-      //   ]
-      // };
       const paint = {
         'fill-color': ['interpolate',
           ['linear'],

@@ -25790,11 +25790,13 @@ var Interface = function (_Component) {
       solarCoverage: _this.props.userInt.get('solarCoverage'),
       solarEfficiency: _this.props.userInt.get('solarEfficiency'),
       eui: _this.props.userInt.get('eui'),
-      minRentBurden: _this.props.userInt.get('minRentBurden')
+      minRentBurden: _this.props.userInt.get('minRentBurden'),
+      activeBox: 'Both'
     };
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.changed = (0, _debounce2.default)(_this.props.changeValue, 750);
+    _this.changeBox = _this.changeBox.bind(_this);
     return _this;
   }
 
@@ -25809,6 +25811,9 @@ var Interface = function (_Component) {
       });
     }
   }, {
+    key: 'changeBox',
+    value: function changeBox(type) {}
+  }, {
     key: 'presetChange',
     value: function presetChange(event, type) {
       var val = void 0;
@@ -25817,6 +25822,7 @@ var Interface = function (_Component) {
       } else {
         val = null;
       }
+      this.setState({ activeBox: type });
       this.props.changeValue(val, 'zones');
     }
   }, {
@@ -25828,6 +25834,7 @@ var Interface = function (_Component) {
       var solarEfficiency = this.props.userInt.get('solarEfficiency');
       var eui = this.props.userInt.get('eui');
       var minRentBurden = this.props.userInt.get('minRentBurden');
+      var activeBox = this.state.activeBox;
 
       var chkboxes = Object.keys(presets).map(function (preset) {
         return _react2.default.createElement(
@@ -25835,6 +25842,7 @@ var Interface = function (_Component) {
           { style: { float: 'left', marginLeft: '10px' }, key: 'preset_' + preset },
           _react2.default.createElement('input', {
             type: 'checkbox',
+            checked: preset === activeBox ? true : false,
             onChange: function onChange(e) {
               return _this3.presetChange(e, preset);
             } }),
@@ -25846,6 +25854,11 @@ var Interface = function (_Component) {
       return _react2.default.createElement(
         'div',
         { id: 'ui', style: style.ui },
+        _react2.default.createElement(
+          'div',
+          { style: style.title },
+          'Getting to Net-Zero'
+        ),
         _react2.default.createElement(
           'div',
           { style: style.header },
@@ -25900,6 +25913,35 @@ var Interface = function (_Component) {
             _react2.default.createElement('input', { type: 'range', min: '1', max: '100', value: this.state.eui, step: '1', className: 'form-control-range', id: 'eui', onChange: function onChange(e) {
                 return _this3.handleChange(e, 'eui');
               } })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            'EUI measures the per-square-foot energy use of a building. A lower EUI (more energy efficient construction), higher area of PV panels, or more powerful PVs, can bring you closer to net-zero. ',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            'All calculations assume the maximum size building (both area and height, called \'Floor Area Ratio\') allowed by current zoning laws.'
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'div',
+            null,
+            'Learn more about ',
+            _react2.default.createElement(
+              'a',
+              { style: { color: 'rgb(200,200,200)', textDecoration: 'underline' }, target: '_blank', href: 'http://www.architecture2030.org/files/2030_Challenge_Targets_Res_Regional.pdf' },
+              'EUI goals'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            'Learn more about the ',
+            _react2.default.createElement(
+              'a',
+              { style: { color: 'rgb(200,200,200)', textDecoration: 'underline' }, target: '_blank', href: 'http://architecture2030.org/2030_challenges/2030-challenge/' },
+              'Architecture 2030 Challenge'
+            )
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement('hr', null),
@@ -25974,11 +26016,12 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 
 var presets = {
-  // SingleFam: ['RF','R20','R10','R7','R5','R2.5'],
+  SingleFam: ['RF', 'R20', 'R10', 'R7', 'R5', 'R2.5'],
   MultiFam: ['RH', 'RX', 'CN1', 'CN2', 'CO1', 'CO2', 'CM', 'CS', 'CG', 'CX', 'EX'],
-  Office: ['CN2', 'CO1', 'CO2', 'CS', 'CG', 'CX', 'EX'],
-  Retail: ['CN2', 'CS', 'CG', 'CX', 'EX'],
-  Industrial: ['EG1', 'EG2', 'EX', 'IG1', 'IG2', 'IH']
+  Both: ['RF', 'R20', 'R10', 'R7', 'R5', 'R2.5', 'RH', 'RX', 'CN1', 'CN2', 'CO1', 'CO2', 'CM', 'CS', 'CG', 'CX', 'EX']
+  // Office: ['CN2','CO1','CO2','CS','CG','CX','EX'],
+  // Retail: ['CN2','CS','CG','CX','EX'],
+  // Industrial: ['EG1','EG2','EX','IG1','IG2','IH']
 };
 
 var style = {
@@ -25989,6 +26032,13 @@ var style = {
   sliderContainer: {
     marginBottom: '10px',
     marginTop: '10px'
+  },
+  title: {
+    marginBottom: '10px',
+    fontWeight: 'medium',
+    fontSize: '1.4em',
+    textAlign: 'center',
+    textDecoration: 'underline'
   },
   ui: {
     zIndex: 2,
@@ -26290,8 +26340,8 @@ function hydrate() {
       userInterface: _immutable2.default.fromJS({
         activeLayer: 'lotsareaburden-v102',
         zones: null,
-        solarCoverage: 60,
-        solarEfficiency: 15,
+        solarCoverage: 75,
+        solarEfficiency: 16,
         eui: 40,
         minRentBurden: 0,
         popup: null
@@ -26515,17 +26565,9 @@ function StylesheetReducer() {
 
         var _kWh_sf_yr = solarEfficiency / 1000 * 1160;
         var filter = ['all', ['>', ['-', ['*', ['to-number', ['get', 'b']], solarCoverage / 100], // SF of possible PV
-        ['/', ['/', ['*', ['*', ['to-number', ['get', 'b']], ['to-number', ['coalesce', ['get', 'c'], 1]]], eui], 3.412142], _kWh_sf_yr] // SF of PV needed
+        ['/', ['/', ['*', ['*', ['to-number', ['get', 'b']], ['max', 1, ['to-number', ['coalesce', ['get', 'c'], 1]]]], eui], 3.412142], _kWh_sf_yr] // SF of PV needed
         ], 0], ['>', ['to-number', ['get', 'a']], minRentBurden], true];
 
-        // const paint = {
-        //   'fill-color': ['rgb',
-        //     0,
-        //     ['*',['/',['to-number',['get','a']], 0.5], 255],
-        //     0,
-        //     ['*',['/',['to-number',['get','a']], 0.5], 255]
-        //   ]
-        // };
         var paint = {
           'fill-color': ['interpolate', ['linear'], ['to-number', ['get', 'a']], 15, 'rgba(0,255,0,0.05)', 20, 'rgba(128,255,0,0.25)', 25, 'rgba(191, 255, 0, 0.3)', 30, 'rgba(255,128,0,0.45)', 35, 'rgba(255,0,0,0.45)', 37, 'rgba(255,0,0,0.45)', 40, 'rgba(255,0,0,0.45)']
         };
@@ -26991,17 +27033,15 @@ exports.default = popupCreator;
 function popupCreator(feature) {
   if (!feature) return null;
 
+  // const { AVG_HEIGHT, BLDG_SQFT, BLDG_USE, BLDG_TYPE } = feature.properties;
+  // const { NUM_STORY, UNITS_RES, YEAR_BUILT } = feature.properties;
   var _feature$properties = feature.properties,
-      AVG_HEIGHT = _feature$properties.AVG_HEIGHT,
-      BLDG_SQFT = _feature$properties.BLDG_SQFT,
-      BLDG_USE = _feature$properties.BLDG_USE,
-      BLDG_TYPE = _feature$properties.BLDG_TYPE;
-  var _feature$properties2 = feature.properties,
-      NUM_STORY = _feature$properties2.NUM_STORY,
-      UNITS_RES = _feature$properties2.UNITS_RES,
-      YEAR_BUILT = _feature$properties2.YEAR_BUILT;
+      a = _feature$properties.a,
+      b = _feature$properties.b,
+      c = _feature$properties.c,
+      d = _feature$properties.d;
 
-  var html = "\n    <div>\n      Height: " + AVG_HEIGHT + " m<br />\n      Area: " + BLDG_SQFT + " sf<br />\n      Use: " + BLDG_USE + " <br />\n      Type: " + BLDG_TYPE + " <br />\n      Floors: " + NUM_STORY + " <br />\n      Units: " + UNITS_RES + " <br />\n      Year: " + YEAR_BUILT + " <br />\n    </div>\n  ";
+  var html = "\n    <div>\n      Rent Burden: " + a + " %<br />\n      Lot Area: " + b + " sf<br />\n      FAR: " + c + " <br />\n      Zone: " + d + " <br />\n    </div>\n  ";
   return html;
 }
 

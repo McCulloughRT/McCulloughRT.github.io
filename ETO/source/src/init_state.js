@@ -7,8 +7,8 @@ function hydrate(usePrevious = null) {
       userInterface: Immutable.fromJS({
         activeLayer: 'lotsareaburden-v102',
         zones: null,
-        solarCoverage: 60,
-        solarEfficiency: 15,
+        solarCoverage: 75,
+        solarEfficiency: 16,
         eui: 40,
         minRentBurden: 0,
         popup: null

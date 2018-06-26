@@ -13,11 +13,13 @@ class Interface extends Component {
       solarCoverage: this.props.userInt.get('solarCoverage'),
       solarEfficiency: this.props.userInt.get('solarEfficiency'),
       eui: this.props.userInt.get('eui'),
-      minRentBurden: this.props.userInt.get('minRentBurden')
+      minRentBurden: this.props.userInt.get('minRentBurden'),
+      activeBox: 'Both'
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.changed = debounce(this.props.changeValue, 750);
+    this.changeBox = this.changeBox.bind(this);
   }
 
   handleChange(event, type) {
@@ -27,6 +29,10 @@ class Interface extends Component {
     })
   }
 
+  changeBox(type) {
+
+  }
+
   presetChange(event, type) {
     let val;
     if(event.target.checked) {
@@ -34,6 +40,7 @@ class Interface extends Component {
     } else {
       val = null;
     }
+    this.setState({ activeBox: type });
     this.props.changeValue(val, 'zones');
   }
 
@@ -42,12 +49,14 @@ class Interface extends Component {
     const solarEfficiency = this.props.userInt.get('solarEfficiency');
     const eui = this.props.userInt.get('eui');
     const minRentBurden = this.props.userInt.get('minRentBurden');
+    const activeBox = this.state.activeBox;
 
     const chkboxes = Object.keys(presets).map(preset => {
       return (
         <div style={{ float:'left', marginLeft: '10px' }} key={ 'preset_' + preset }>
           <input
             type='checkbox'
+            checked={ preset === activeBox ? true : false }
             onChange={ (e) => this.presetChange(e, preset) }/> { preset }
         </div>
       );
@@ -55,6 +64,7 @@ class Interface extends Component {
 
     return (
       <div id='ui' style={ style.ui }>
+        <div style= { style.title }>Getting to Net-Zero</div>
         <div style={ style.header }>Adjust Power Assumptions:<div style={ style.reminder }>Only net-zero or positive lots will be shown.</div></div>
 
         <div>
@@ -70,6 +80,10 @@ class Interface extends Component {
             <div>Anticipated EUI: { this.state.eui } kBTU/sf/yr</div>
             <input type="range" min='1' max='100' value={ this.state.eui } step='1' className="form-control-range" id="eui" onChange={ (e) => this.handleChange(e, 'eui') } />
           </div>
+          <div>EUI measures the per-square-foot energy use of a building. A lower EUI (more energy efficient construction), higher area of PV panels, or more powerful PVs, can bring you closer to net-zero. <br /><br />All calculations assume the maximum size building (both area and height, called 'Floor Area Ratio') allowed by current zoning laws.</div>
+          <br />
+          <div>Learn more about <a style={{color: 'rgb(200,200,200)', textDecoration: 'underline' }} target='_blank' href='http://www.architecture2030.org/files/2030_Challenge_Targets_Res_Regional.pdf'>EUI goals</a></div>
+          <div>Learn more about the <a style={{color: 'rgb(200,200,200)', textDecoration: 'underline' }} target='_blank' href='http://architecture2030.org/2030_challenges/2030-challenge/'>Architecture 2030 Challenge</a></div>
           <br /><hr />
           <div style={ style.header }>Adjust Policy Assumptions:<div style={ style.reminder }>Only lots matching these filters will be shown.</div></div>
           <div style={ style.zoneContainer } id='zone_presets'>
@@ -107,11 +121,12 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, mapDispatchToProps)(Interface);
 
 const presets = {
-  // SingleFam: ['RF','R20','R10','R7','R5','R2.5'],
+  SingleFam: ['RF','R20','R10','R7','R5','R2.5'],
   MultiFam: ['RH','RX','CN1','CN2','CO1','CO2','CM','CS','CG','CX','EX'],
-  Office: ['CN2','CO1','CO2','CS','CG','CX','EX'],
-  Retail: ['CN2','CS','CG','CX','EX'],
-  Industrial: ['EG1','EG2','EX','IG1','IG2','IH']
+  Both: ['RF','R20','R10','R7','R5','R2.5','RH','RX','CN1','CN2','CO1','CO2','CM','CS','CG','CX','EX']
+  // Office: ['CN2','CO1','CO2','CS','CG','CX','EX'],
+  // Retail: ['CN2','CS','CG','CX','EX'],
+  // Industrial: ['EG1','EG2','EX','IG1','IG2','IH']
 };
 
 const style = {
@@ -122,6 +137,13 @@ const style = {
   sliderContainer: {
     marginBottom: '10px',
     marginTop: '10px'
+  },
+  title: {
+    marginBottom: '10px',
+    fontWeight: 'medium',
+    fontSize: '1.4em',
+    textAlign: 'center',
+    textDecoration: 'underline'
   },
   ui: {
     zIndex: 2,
