@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>Display a map</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+  <style>
+    body { margin:0; padding:0; font: 8px sans-serif;}
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+    #ui {
+      z-index: 2;
+      left: 10px;
+      top: 10px;
+      width: 650px;
+      height: 250px;
+      background: white;
+      position: absolute;
+    }
+    .bar rect {
+      shape-rendering: crispEdges;
+    }
+    .bar text {
+      fill: #999999;
+    }
+    .axis path, .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+    #slider {
+      margin-left: 30px;
+      width: 590px;
+    }
+    :focus {
+      outline: 0;
+    }
+    #slider label {
+      position: absolute;
+      width: 20px;
+      margin-left: -10px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div id='ui'>
+  <div id='hist'></div>
+  <div id='slider'></div>
+  <!-- <input id='slider' type='range' value='1997' min='1997' max='2018' step='1'/> -->
+</div>
+<div id='map'></div>
+
+<script>
+
+</script>
+
+<script>
+  var color = "steelblue";
+  var currIdx = 0;
+  var currentYear = 'Series_1996';
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoicnlhbnRtIiwiYSI6ImNpaDgycjExZzB0NDR1MWtpbWdkeDhxbmIifQ.AamjhGik8yPxK5V71kzHdw';
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v9',
+    center: [-105.039,39.731],
+    zoom: 15
+  });
+
+  d3.json("https://gist.githubusercontent.com/McCulloughRT/1635f2fd30c748a96fcda61a17d52730/raw/5163564d3d068c447375a0f10bc6374f82f51f41/aggregate.json", function(error, alldata) {
+    // const inputSlider = document.getElementById('slider');
+    // inputSlider.addEventListener("change", handleSlider, false);
+
+    $( "#slider" ).slider({
+      value: 1996,
+      min: 1996,
+      max: 2018,
+      step: 1,
+      slide: function( event, ui ) {
+        console.log(ui.value);
+        const time = 'Series_' + ui.value.toString();
+        refresh(alldata[time]);
+        currentYear = time;
+        map.setPaintProperty('parcels', 'fill-color', [
+          'interpolate',
+          ['linear'],
+          ['get', time],
+          100000,
+          "hsla(232, 100%, 32%, 0.65)",
+          400000,
+          "hsl(239, 100%, 100%)"
+        ]);
+      }
+    })
+    .each(function() {
+      // Get the options for this slider
+      var opt = $(this).data().uiSlider.options;
+      // Get the number of possible values
+      var vals = opt.max - opt.min;
+      // Space out values
+      for (var i = 0; i <= vals; i++) {
+        var el = $('<label>'+(i+1996)+'</label>').css('left',(i/vals*100)+'%');
+        $( "#slider" ).append(el);
+      }
+    });
+
+    // const time = "Series_2017";
+
+    map.on('load', function() {
+      map.addSource("parcelSource", {
+        type:'vector',
+        url: 'mapbox://ryantm.9csjd7zi'
+      });
+      map.addLayer({
+        id: 'parcels',
+        type: 'fill',
+        source: 'parcelSource',
+        'source-layer': 'timeSeriesData',
+        paint: {
+          'fill-color': [
+            'interpolate',
+            ['linear'],
+            ['get', 'Series_1996'],
+            100000,
+            "hsla(232, 100%, 32%, 0.25)",
+            400000,
+            "hsla(239, 100%, 100%, 0.75)"
+          ],
+          'fill-color-transition': {
+            duration: 1000
+          }
+        }
+      });
+      map.addLayer({
+        id: 'parcel-lines',
+        type: 'line',
+        source: 'parcelSource',
+        'source-layer': 'timeSeriesData',
+        paint: {
+          'line-width': 0.75,
+          'line-opacity': 0.5,
+          'line-color': 'black'
+        }
+      });
+
+      // When a click event occurs on a feature in the states layer, open a popup at the
+      // location of the click, with description HTML from its properties.
+      map.on('click', 'parcels', function (e) {
+        var ft = e.features[0].properties;
+        var html = '<div>Classification: ' + ft.D_CLASS_CN + '<br />Zone: ' + ft.ACT_ZONE + '<br />Value (in time): $' + Math.round(ft[currentYear]) + '<br />Year Built: ' + ft.CCYRBLT + '</div>';
+        new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML(html)
+          .addTo(map);
+      });
+
+      // Change the cursor to a pointer when the mouse is over the states layer.
+      map.on('mouseenter', 'parcels', function () {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      // Change it back to a pointer when it leaves.
+      map.on('mouseleave', 'parcels', function () {
+        map.getCanvas().style.cursor = '';
+      });
+    });
+
+    var values = alldata.Series_1996;
+    var years = Object.keys(alldata).slice(0,23);
+
+    // A formatter for counts.
+    var formatCount = d3.format(",.0f");
+
+    var margin = {top: 20, right: 30, bottom: 30, left: 30},
+        width = 650 - margin.left - margin.right,
+        height = 200 - margin.top - margin.bottom;
+
+    var max = Math.min(d3.max(values), 350000);
+    var min = d3.min(values);
+    var x = d3.scale.linear()
+          .domain([min, max])
+          .range([0, width]);
+
+    // Generate a histogram using twenty uniformly-spaced bins.
+    var data = d3.layout.histogram()
+        .bins(x.ticks(50))
+        (values);
+
+    var yMax = d3.max(data, function(d){return d.length});
+    var yMin = d3.min(data, function(d){return d.length});
+    var colorScale = d3.scale.linear()
+                .domain([yMin, yMax])
+                .range([d3.rgb(color).brighter(), d3.rgb(color).darker()]);
+
+    var y = d3.scale.linear()
+        .domain([0, yMax])
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+        .tickFormat( function(d) { return "$" + d });
+
+    var svg = d3.select("#hist").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var bar = svg.selectAll(".bar")
+        .data(data)
+      .enter().append("g")
+        .attr("class", "bar")
+        .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+    bar.append("rect")
+        .attr("x", 1)
+        .attr("width", (x(data[0].dx) - x(0)) - 1)
+        .attr("height", function(d) { return height - y(d.y); })
+        // .attr("fill", function(d) { return colorScale(d.y) });
+        .attr('fill', color);
+
+    bar.append("text")
+        .attr("dy", ".75em")
+        .attr("y", -12)
+        .attr("x", (x(data[0].dx) - x(0)) / 2)
+        .attr("text-anchor", "middle")
+        .text(function(d) { return formatCount(d.y); });
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    /*
+    * Adding refresh method to reload new data
+    */
+    function refresh(values){
+      // var values = d3.range(1000).map(d3.random.normal(20, 5));
+      var data = d3.layout.histogram()
+        .bins(x.ticks(50))
+        (values);
+
+      // Reset y domain using new data
+      var yMax = d3.max(data, function(d){return d.length});
+      var yMin = d3.min(data, function(d){return d.length});
+      y.domain([0, yMax]);
+      var colorScale = d3.scale.linear()
+                  .domain([yMin, yMax])
+                  .range([d3.rgb(color).brighter(), d3.rgb(color).darker()]);
+
+      var bar = svg.selectAll(".bar").data(data);
+
+      // Remove object with data
+      bar.exit().remove();
+
+      bar.transition()
+        .duration(500)
+        .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+      bar.select("rect")
+          .transition()
+          .duration(500)
+          .attr("height", function(d) { return height - y(d.y); })
+          // .attr("fill", function(d) { return colorScale(d.y) });
+          .attr('fill', color);
+
+      bar.select("text")
+          .transition()
+          .duration(500)
+          .text(function(d) { return formatCount(d.y); });
+
+    }
+
+    // // Calling refresh repeatedly.
+    // setInterval(function() {
+    //   if(currIdx < 22) currIdx++;
+    //   else currIdx = 0;
+    //   console.log(years[currIdx]);
+    //   var newSliderVal = 1996 + currIdx;
+    //   inputSlider.value = newSliderVal;
+    //   var values = alldata[years[currIdx]]
+    //   refresh(values);
+    // }, 2000);
+  })
+</script>
+
+</body>
+</html>
