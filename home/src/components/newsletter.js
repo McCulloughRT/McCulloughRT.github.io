@@ -8,7 +8,7 @@ export default function About(props) {
         <div className='row' style={ style.headRow }>
           <div className='col-lg-8 col-lg-offset-2 text-center'>
             <p style={ style.heading }>Announcement:</p>
-            <p style={ style.subHeading }>After accepting a position leading strategy and innovation at Andersen Construction, much of my personal work and focus has moved there! You can see a sample of what we've been working on at <a href='http://andersen-labs.com' target='_blank'>andersen-labs.com</a></p>
+            <p style={ style.subHeading }>After accepting a position leading strategy and innovation at Andersen Construction, much of my personal work and focus has moved there! You can see a sample of what we've been working soon there!</p>
           </div>
         </div>
         {/* <div className='col-md-12 text-center' id='subscribeBtn'>
